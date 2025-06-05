@@ -1,17 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
 
+.share-tech-regular{
+  font-family: "Share Tech", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.winky-rough-regular {
+  font-family: "Winky Rough", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
 
 
 /* blue color palette 
-FFF2F2 
-A9B5DF
-7886C7
-2D336B */
+FFF2F2 -> light pink
+A9B5DF -> light purple
+7886C7 -> medium purple
+2D336B -> dark purple
+*/
 
 /* purple and yellow color palette 
-493D9E
-B2A5FF
-DAD2FF
-FFF2AF */
+493D9E -> dark purple
+B2A5FF -> medium purple
+DAD2FF -> light purple
+FFF2AF -> light yellow 
+*/

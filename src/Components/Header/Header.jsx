@@ -9,7 +9,11 @@ const Header = () => {
         <>
             <li className='navLinks'><NavLink to="/">Home</NavLink></li>
             <li className='navLinks lg:ml-10'><NavLink to="/availableCars">Available Cars</NavLink></li>
+            <li className='navLinks lg:ml-10'><NavLink to="/addCar">Add Car</NavLink></li>
+            <li className='navLinks lg:ml-10'><NavLink to="/myCars">My Cars</NavLink></li>
+            <li className='navLinks lg:ml-10'><NavLink to="/myBookings">My Bookings</NavLink></li>
             <li className='navLinks lg:ml-10'><NavLink to="/login">Login</NavLink></li>
+            <li className='navLinks lg:ml-10'><NavLink to="/register">Register</NavLink></li>
         </>
 
     return (
@@ -39,6 +43,7 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 <h1 className='text-[#2D336B] text-2xl font-bold'>Hello!</h1>
+                <button className='btn ml-5'>Logout</button>
             </div>
         </div>
     );

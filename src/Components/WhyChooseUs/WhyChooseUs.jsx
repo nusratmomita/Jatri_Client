@@ -6,7 +6,7 @@ import Support from '../../assets/customerSupport.png';
 
 const WhyChooseUs = () => {
     return (
-        <div className="mt-40 my-24 px-4 text-center">
+        <div className="mt-40 my-24 px-5 text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-[#493D9E] mb-12">
                 [ Why Choose Us? ]
             </h1>

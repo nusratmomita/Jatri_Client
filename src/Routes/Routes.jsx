@@ -8,6 +8,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AddCars from "../Pages/AddCars/AddCars";
 import MyCars from "../Pages/MyCars/MyCars";
 import MyBookings from "../Pages/MyBookings/MyBookings";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -26,15 +27,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/addCar",
-                Component: AddCars
+                element: <PrivateRoute> <AddCars></AddCars> </PrivateRoute>
             },
             {
                 path: "/myCars",
-                Component: MyCars
+                element: <PrivateRoute> <MyCars></MyCars> </PrivateRoute>
             },
             {
                 path: "/myBookings",
-                Component: MyBookings
+                element: <PrivateRoute> <MyBookings></MyBookings> </PrivateRoute>
             },
             {
                 path: "/login",

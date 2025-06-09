@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import siteLogo from '../../assets/siteLogo.png';
 import { Link, NavLink } from 'react-router';
 import './Header.css';
+import { AuthContext } from '../../Authentication/AuthContext';
 
 const Header = () => {
+
+    const {user} = useContext(AuthContext);
+
 
     const links = 
         <>
@@ -42,7 +46,10 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <h1 className='text-[#2D336B] text-2xl font-bold'>Hello!</h1>
+                <div className='flex gap-4 justify-center items-center'>
+                    <img className="w-10 h-10 bg-white p-1 rounded-full "src={user?.photoURL} alt="userPhoto" />
+                    <h1 className='text-[#2D336B] text-2xl font-bold'>Hi,{user?.displayName}</h1>
+                </div>
                 <button className='btn ml-5'>Logout</button>
             </div>
         </div>

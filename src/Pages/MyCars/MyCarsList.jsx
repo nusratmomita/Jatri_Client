@@ -1,12 +1,12 @@
 import React, { use } from 'react';
 
 const MyCarsList = ({myCarsPromise}) => {
-    const carData = use(myCarsPromise);
-    console.log(carData)
+    const cars = use(myCarsPromise);
+    console.log(cars)
 
     return (
         <div>
-            {carData.length}
+            {cars.length}
         </div>
     );
 };

@@ -9,6 +9,7 @@ import AddCars from "../Pages/AddCars/AddCars";
 import MyCars from "../Pages/MyCars/MyCars";
 import MyBookings from "../Pages/MyBookings/MyBookings";
 import PrivateRoute from "./PrivateRoute";
+import CarDetails from "../Pages/CarDetails/CarDetails";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/availableCars",
+                loader: ()=> fetch('http://localhost:3000/cars'),
                 Component: AvailableCars
             },
             {
@@ -32,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: "/myCars",
                 element: <PrivateRoute> <MyCars></MyCars> </PrivateRoute>
+            },
+            {
+                path: "/carDetails/:id",
+                Component: CarDetails
             },
             {
                 path: "/myBookings",

@@ -7,7 +7,7 @@ import { FaSackDollar } from "react-icons/fa6";
 
 const AvailableCars = () => {
     const allCars = useLoaderData();
-    console.log(allCars);
+    // console.log(allCars);
    
     const addedCarDate = (CarDate) => {
         const date = new Date(CarDate);
@@ -23,7 +23,7 @@ const AvailableCars = () => {
                     : (day === 2 || day === 22) ? 'nd'
                     : (day === 3 || day === 23) ? 'rd'
                     : 'th';
-        console.log(day,month,suffix)
+        // console.log(day,month,suffix)
         return `${day}${suffix} ${month}`;
     }
    

@@ -37,6 +37,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/carDetails/:id",
+                loader: ({params}) => fetch(`http://localhost:3000/cars/${params.id}`),
                 Component: CarDetails
             },
             {

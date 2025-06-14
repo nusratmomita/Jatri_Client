@@ -65,7 +65,7 @@ const CarDetails = () => {
 
         axios.post('http://localhost:3000/bookings' , bookingInfo)
         .then(() => {
-            toast.success(`You've booked ${singleCar.car_model} successfully!`);
+            toast.success(`You've booked "${singleCar.car_model}" successfully!`);
             document.getElementById('bookNow').close();
         })
         .catch(() => {

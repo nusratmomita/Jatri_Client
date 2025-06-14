@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { Suspense, useContext } from 'react';
+import MyBookingList from './MyBookingList';
+import { myBookingsPromise } from '../../API/MyBookingsPromise';
+import { AuthContext } from '../../Authentication/AuthContext';
 
 const MyBookings = () => {
+    const {user} = useContext(AuthContext);
+    
     return (
         <div>
-            My Bookings
+            <Suspense fallback={
+                <div className="flex justify-center items-center h-screen">
+                    <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+                </div>}>
+                <MyBookingList myBookingsPromise={myBookingsPromise(user?.email)}></MyBookingList>
+            </Suspense>
         </div>
     );
 };

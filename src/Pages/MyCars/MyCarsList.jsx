@@ -3,10 +3,13 @@ import { Link, NavLink } from "react-router";
 import { AiFillEdit, AiTwotonePlusCircle } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const MyCarsList = ({ myCarsPromise }) => {
   const cars = use(myCarsPromise);
   console.log(cars);
+  const [myCars , setMyCars] = useState(cars);
+
   let [carId , setCarId] = useState(null);
 
 
@@ -76,7 +79,38 @@ const MyCarsList = ({ myCarsPromise }) => {
   };
 
   const handleDeleteCar = (id) => {
-    fetch(``)
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`http://localhost:3000/cars/${id}`,{
+                method: "DELETE",
+            })
+            .then(res=>res.json())
+            .then((data)=>{
+                console.log(data)
+                if(data.deletedCount)
+                {
+                    Swal.fire({
+                    title: "Deleted!",
+                    text: "The car has been deleted.",
+                    icon: "success"
+                    });
+                }
+                toast.success("The car has been deleted successfully!");
+
+                const remainingCars = myCars.filter((cars)=> cars._id !== id);
+                setMyCars(remainingCars)
+            });
+        }
+    });
+
   }
 
   return (
@@ -120,7 +154,7 @@ const MyCarsList = ({ myCarsPromise }) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {cars.map((car) => (
+                        {myCars.map((car) => (
                           <tr
                             key={car._id}
                             className="border-t hover:bg-gray-100 text-center"
@@ -276,7 +310,7 @@ const MyCarsList = ({ myCarsPromise }) => {
                               </dialog>
 
                               <button
-                                onClick={handleDeleteCar(car._id)}
+                                onClick={()=> handleDeleteCar(car._id)}
                                 className="cursor-pointer flex gap-2 justify-center items-center 
                                             bg-gradient-to-r from-[#F87171] to-[#B91C1C] hover:from-[#B91C1C] hover:to-[#F87171] 
                                             text-white font-semibold py-1.5 px-4 rounded-md transition duration-300 shadow-md hover:shadow-xl"

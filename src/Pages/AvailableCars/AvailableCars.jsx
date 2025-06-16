@@ -6,8 +6,9 @@ import { FaSackDollar } from "react-icons/fa6";
 
 
 const AvailableCars = () => {
-    const allCars = useLoaderData();
-    // console.log(allCars);
+    const [toggleStyle , setToggleStyle] = useState(true);
+    const [cars , setCars] = useState(useLoaderData());
+    const [searchText , setSearchText] = useState('');
    
     const addedCarDate = (CarDate) => {
         const date = new Date(CarDate);
@@ -27,20 +28,63 @@ const AvailableCars = () => {
         return `${day}${suffix} ${month}`;
     }
    
-
-    const [toggleStyle , setToggleStyle] = useState(true);
-
     const handleToggleBtn = () => {
         setToggleStyle(!toggleStyle);
+    }
+
+    const handleSearch = () => {
+        fetch(`http://localhost:3000/cars?searchText=${searchText}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            // console.log(data)
+            setCars(data);
+        })
     }
 
     return (
         <div className='winky-rough-regular'>
             <div className='flex flex-col lg:flex-row  justify-between items-center'>
                 <h1 className='ml-30 text-5xl font-bold mt-20 text-violet-900'>
-                    Total Available Car(s): {allCars.length}
+                    Total Available Car(s): {cars.length}
                 </h1>
                 <div className='flex justify-center items-center gap-4'>
+                    <label className="input mt-20 w-[100%]">
+                        <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                            strokeWidth="2.5"
+                            fill="none"
+                            stroke="currentColor"
+                            >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                            </g>
+                        </svg>
+                        <input type="search" 
+                               className="grow text-xl font-bold text-black"
+                               value={searchText} 
+                               onChange={(e) => {
+                                    setSearchText(e.target.value);
+
+                                    if(e.target.value === ''){
+                                        fetch("http://localhost:3000/cars")
+                                        .then(res=>res.json())
+                                        .then(data=>{
+                                            setCars(data);
+                                        })
+                                    }
+                                }
+                                
+                               } 
+                               onKeyDown={(e)=>{
+                                if(e.key === "Enter"){
+                                    handleSearch();
+                                }
+                               }}
+                               
+                               placeholder="Search..." />
+                    </label>
                     <select defaultValue="Sort by.." className="mt-20 text-xl font-bold select w-[100%]">
                         <option disabled={true}>Sort by..</option>
                         <option>Sort by Date:(Oldest)</option>
@@ -55,10 +99,16 @@ const AvailableCars = () => {
             </div>
 
             {
+                cars.length === 0 ?
+                <div className="mt-40 flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#f4f4f8] to-[#eae6ff] rounded-3xl p-10 shadow-lg max-w-xl mx-auto">
+                    <h1 className="text-3xl lg:text-4xl font-bold text-[#2D336B] mb-4">
+                    🚗 Alas! No Car named or located with "{searchText}"
+                    </h1>
+                </div>
+                        :
                 toggleStyle ? 
-
                 <div className='m-10 lg:m-30 grid justify-center items-center gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                {allCars.map((car) => (
+                {cars.map((car) => (
                     <div
                         key={car._id}
                         className="relative card h-[650px] bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
@@ -108,7 +158,7 @@ const AvailableCars = () => {
             :
                 <div className='m-10 lg:m-30 grid justify-center items-center gap-10 grid-rows-1 md:grid-rows-2 lg:grid-rows-3'>
                    
-                    {allCars.map((car) => (
+                    {cars.map((car) => (
                         <div
                             key={car._id}
                             className="relative w-[460px] lg:w-[1205px] card bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"

@@ -1,15 +1,23 @@
-import React, { use } from 'react';
+import axios from 'axios';
+import React, { use, useState } from 'react';
 import { AiFillEdit } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { SlCalender } from "react-icons/sl";
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 
 const MyBookingList = ({myBookingsPromise}) => {
-    const bookings = use(myBookingsPromise);
-    console.log(bookings);
+    const initialBookings = use(myBookingsPromise);
+    const [bookings , setBookings] = useState(initialBookings);
+    console.log(bookings)
 
-    const date = new Date();
-    const bookedOn = bookings.bookedOn;
-    console.log(date,bookedOn)
+
+    const [startingDate , setStartingDate] = useState('');
+    const [endingDate , setEndingDate] = useState('');
+    const [currentBookingID , setCurrentBookingId] = useState(null);  
+    // const [dailyPrice , setDailyPrice] = useState(0);  
+
 
     const formatDate = (bookedOnDate) => {
       const bookedOn = new Date(bookedOnDate);
@@ -17,12 +25,105 @@ const MyBookingList = ({myBookingsPromise}) => {
       const month = bookedOn.getMonth()+1;
       const year = bookedOn.getFullYear();
       const hour = (bookedOn.getHours());
-      const minutes = bookedOn.getMinutes();
+      const minutes = bookedOn.getMinutes().toString().padStart(2, '0');
+      // console.log(minutes)
   
-      return `${day}-${month}-${year} ${hour}:${minutes}`;
+      return `${day}-${month}-${year}, at ${hour}:${minutes}`;
     }
+
+    const handleUpdateDate = (e) => {
+      e.preventDefault();
+
+      if(!startingDate || !endingDate){
+        toast.error("You must fill in the fields to confirm you booking.")
+        return
+      }
+      const startDay = new Date(startingDate);
+      const endDay = new Date(endingDate);
+      const diff = Math.floor((endDay-startDay) / (1000 * 60 * 60 * 24));
+
+      const currentBooking = bookings.find((booking)=> booking._id === currentBookingID);
+      const dailyRent = currentBooking.rentalPrice;
+      const newPrice = diff * dailyRent; 
+
+      axios.patch(`http://localhost:3000/bookings/${currentBookingID}` ,{
+        bookingStart : startingDate,
+        bookingEnd : endingDate,
+        bookingStatus: "Confirmed",
+        totalPrice : newPrice
+      })
+      .then((res)=>
+      {
+        if(res.data.modifiedCount){
+          toast.success("You've successfully booked the car!");
+
+          setBookings(prevBookings => prevBookings.map(booking => 
+            booking._id === currentBookingID ?
+              {
+                ...booking , 
+                bookingStart : startingDate,
+                bookingEnd : endingDate,
+                bookingStatus: "Confirmed",
+                totalPrice : newPrice
+              } 
+              :
+              booking
+          )) 
+        }
+        document.getElementById('updateNow').close();
+      })
+      .catch()
+    }
+
+    const handleCancelCar = (e,id) => {
+      e.preventDefault();
+      setCurrentBookingId(id);
+
+      Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, cancel it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.patch(`http://localhost:3000/bookings/${id}` ,{
+        bookingStatus: "Canceled"
+      })
+      .then((res)=>
+      {
+        console.log(res.data)
+        if(res.data.modifiedCount){
+          toast.success("You've canceled the booking");
+
+          setBookings(prevBookings => prevBookings.map(booking => 
+            booking._id === id ?
+              {
+                ...booking , 
+                bookingStatus: "Canceled"
+              } 
+              :
+              booking
+          ))
+          Swal.fire({
+          title: "Canceled!",
+          text: "You've canceled the car.",
+          icon: "success"
+        });
+        }
+
+      })
+      .catch()
+      }
+    });
+    }
+
+
+
     return (
-        <>
+        <div className='winky-rough-regular whitespace-nowrap'>
             <h1 className="mt-25 mb-20 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
               All the cars booked by YOU are shown here...
             </h1>
@@ -31,9 +132,9 @@ const MyBookingList = ({myBookingsPromise}) => {
                 <div className="flex justify-center items-center min-h-screen p-16">
                   <div className="overflow-x-auto w-full max-w-8xl rounded-2xl border border-gray-300 shadow-lg bg-white">
                     <table className="min-w-full table-auto text-2xl font-bold rounded-2xl overflow-hidden">
-                      <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] w-full rounded-t-2xl text-gray-700">
-                        <tr className="text-2xl text-center">
-                          <th className="py-3 px-4">Car Image</th>
+                      <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] w-full rounded-t-2xl text-gray-900 font-bold">
+                        <tr className="text-center">
+                          <th className="py-3 px-4 ">Car Image</th>
                           <th className="py-3 px-4">Car Model</th>
                           <th className="py-3 px-4">Booking Date</th>
                           <th className="py-3 px-4">Starting Date</th>
@@ -43,7 +144,7 @@ const MyBookingList = ({myBookingsPromise}) => {
                           <th className="py-3 px-4">Actions</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody className='text-gray-600'>
                         {bookings.map((car) => (
                           <tr
                             key={car._id}
@@ -59,58 +160,65 @@ const MyBookingList = ({myBookingsPromise}) => {
                             <td className="py-2 px-8">{car.carModel}</td>
                             <td className="py-2 px-4">{formatDate(car.bookedOn)}</td>
                             <td className="py-2 px-6">
-                              {formatDate(car.bookingStart)}
+                              {car.bookingStart ? formatDate(car.bookingStart) : "N/A"}
                             </td>
                             <td className="py-2 px-6">
-                              {formatDate(car.bookingEnd)}
+                              {car.bookingEnd ? formatDate(car.bookingEnd) : "N/A"}
                             </td>
-                            <td className="py-2 px-6">${car.totalPrice}</td>
+                            <td className="py-2 px-6">${car.totalPrice || 0}</td>
                             <td className="py-2 px-6">
                               {car.bookingStatus}
                             </td>
                             <td className="py-2 px-6 flex gap-4 justify-center mt-5">
                               <button
                                 onClick={() => {
-                                    // setCarId(car);
+                                    setCurrentBookingId(car._id);
                                     document
                                         .getElementById("updateNow")
                                         .showModal()
                                 }
                                 }
-                                className="cursor-pointer flex gap-2 justify-center items-center 
-                                        bg-gradient-to-t from-[#7886C7] to-[#493D9E] hover:from-[#493D9E] hover:to-[#7886C7] 
-                                        text-white font-semibold py-1.5 px-4 rounded-md transition duration-300 shadow-md hover:shadow-xl"
+                                className="cursor-pointer w-[170px] flex gap-2  justify-center items-center bg-blue-500 text-white font-medium p-2 rounded-md"
                               >
-                                <AiFillEdit></AiFillEdit>
-                                Confirm
+                                <SlCalender />
+                                Modify Date
                               </button>
                               
                               <dialog
                                 id="updateNow"
                                 className="modal modal-bottom sm:modal-middle">
-                                <div className="modal-box bg-[#7886C7] ">
+                                <div className="modal-box bg-white text-[#493D9E]">
                                 <div className="rounded-3xl p-12 text-center space-y-5">
-                                    <h3 className="text-6xl text-[#FFF2AF]">Update</h3>
-                                    <form 
-                                    // onSubmit={handleUpdateForm}
-                                    >
+                                    <h3 className="text-6xl">Update Dates</h3>                                   
                                         <div className="mt-15 grid grid-cols-1 gap-5">
-                                        <div className="modal-action">
-                                            <button type="submit" className="cursor-pointer w-1/2 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-2 text-lg font-bold text-black 
-                                            shadow-md hover:shadow-xl transition duration-300">Update </button>
-                                            <button type="button" className="cursor-pointer w-1/2 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-2 text-lg font-bold text-black shadow-md hover:shadow-xl transition duration-300" 
-                                                onClick={()=> document.getElementById('updateNow').close()}>Cancel </button>                                    
-                                        </div>
+                                          <label htmlFor="startingDate" className='text-4xl text-[#2D336B]'>Starting Date: </label>
+                                          <input className="ml-1 border-2 border-black p-2 rounded-2xl" type="datetime-local" name="startingDate" id="start"
+                                                onChange={(e) => setStartingDate(e.target.value)}
+                                          />
+                                          <br />
+                                          <br />
+                                          <label htmlFor="endingDate" className='text-4xl text-[#2D336B]'>Ending Date: </label>
+                                          <input className="ml-3 border-2 border-black p-2 rounded-2xl" type="datetime-local" name="endingDate" id="end" 
+                                                onChange={(e) => setEndingDate(e.target.value)}/>
+                                          <br />
+                                          <br />
+                                          <div className="modal-action">
+                                              <button onClick={(e)=> handleUpdateDate(e)} type="submit" className="cursor-pointer w-1/2 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-2 text-lg font-bold text-black 
+                                              shadow-md hover:shadow-xl transition duration-300">Confirm</button>
+                                              <button type="button" className="cursor-pointer w-1/2 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-2 text-lg font-bold text-black shadow-md hover:shadow-xl transition duration-300" 
+                                                  onClick={()=> document.getElementById('updateNow').close()}>Close</button>                                    
+                                          </div>
                                     </div>
-                                    </form>
                                 </div>
                                 </div>
                               </dialog>
 
                               <button
-                                // onClick={()=> handleDeleteCar(car._id)}
+                                onClick={(e)=> {
+                                  handleCancelCar(e,car._id)
+                                } }
                                 className="cursor-pointer flex gap-2 justify-center items-center 
-                                            bg-gradient-to-t from-[#F87171] to-[#B91C1C] hover:from-[#B91C1C] hover:to-[#F87171] 
+                                            bg-red-500
                                             text-white font-semibold py-1.5 px-4 rounded-md transition duration-300 shadow-md hover:shadow-xl"
                               >
                                 <RiDeleteBin5Line></RiDeleteBin5Line>Cancel
@@ -124,7 +232,7 @@ const MyBookingList = ({myBookingsPromise}) => {
                 </div>
               </div>
             }
-          </>
+          </div>
     );
 };
 

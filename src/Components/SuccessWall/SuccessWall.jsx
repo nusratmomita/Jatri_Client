@@ -14,8 +14,8 @@ const SuccessWall = () => {
             <h1 className="text-5xl md:text-6xl font-bold text-[#493D9E] mb-12">
                 [ Success Wall ]
             </h1>
-            <div className='winky-rough-regular lg:flex justify-evenly'>
-                <Lottie style={{width : "420px"}} animationData={successAnimation} loop={true}></Lottie>
+            <div className='-mt-10  winky-rough-regular lg:flex justify-evenly'>
+                <Lottie style={{width: "450px"}} animationData={successAnimation} loop={true}></Lottie>
                 <div className='grid lg:grid-cols-1'>
                     <div className='bg-[#7886C7] p-2 mt-20 w-110 h-40 rounded-3xl lg:hidden'>
                         <h1 className='mt-4 text-center flex flex-row-reverse gap-1 justify-center items-center text-3xl font-bold text-[#FFF2AF]'> <span className='underline'> <CountUp start={0} end={1500}></CountUp>+</span> Total Happy customers  <FaPeopleGroup size={30}></FaPeopleGroup></h1>

@@ -5,7 +5,10 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const CarDetails = () => {
-    const singleCar = useLoaderData();
+    const singleCarData = useLoaderData();
+    const [singleCar , setSingleCar] = useState(singleCarData);
+    const [isDateValid , setIsDateValid] = useState(false);
+
     const { user } = useContext(AuthContext);
 
     const [startingDate , setStartingDate] = useState('');
@@ -17,15 +20,17 @@ const CarDetails = () => {
         const endDate = new Date(end);
 
 
-        if(start && end && endDate > startDate) {
+        if(start && end && endDate > startDate && startDate > new Date() && endDate > new Date()) {
             const diff = endDate - startDate;
             const totalDays = Math.ceil(diff/ (1000 * 60 * 60 * 24));
 
             const price = (singleCar.rental_price * totalDays);
             setTotalPrice(price);
+            setIsDateValid(true);
         }
         else{
             setTotalPrice(0);
+            setIsDateValid(false);
         }
     }
 
@@ -52,7 +57,11 @@ const CarDetails = () => {
             toast.error("You must provide starting and ending date to book the car.");
             return;
         }
-  
+        
+        if(!isDateValid){
+            toast.error("You've put invalid dates. Kindly put correct booking dates.");
+            return;
+        }
 
         const bookingInfo = {
             carModel : singleCar.car_model,
@@ -66,17 +75,23 @@ const CarDetails = () => {
             userEmail : user?.email
         }
 
-        axios.post('http://localhost:3000/bookings' , bookingInfo)
+        axios.post('http://localhost:3000/bookings', bookingInfo)
         .then(() => {
+            return axios.patch(`http://localhost:3000/cars/bookings/${singleCar._id}`);
+        })
+        .then(() => {
+            setSingleCar((prev) => ({
+                ...prev,
+                car_booking_count: (prev.car_booking_count || 0) + 1
+            }));
+
             toast.success(`You've booked "${singleCar.car_model}" successfully!`);
             document.getElementById('bookNow').close();
+            form.reset();
         })
         .catch(() => {
-            //toast.error("There is some booking this car right now.Please try later.")
+            toast.error("Booking failed. Try again later.");
         });
-        
-        form.reset();
-        
     }
 
     return (
@@ -111,6 +126,9 @@ const CarDetails = () => {
                     <p className='text-xl'><strong>👤 Added By:</strong> {user?.displayName || "N/A"}</p>
                     <p className='text-xl'><strong>📧 Contact Email:</strong> <span className='text-sm lg:text-xl'>{singleCar.email}</span></p>
                     <p className='text-xl'><strong>📅 Available:</strong> {singleCar.availability}</p>
+                    <p className='text-xl'>
+                        <strong>📈 Booking Count:</strong> {singleCar.car_booking_count || 0}
+                    </p>
                     <p className="text-xl font-bold text-[#2D336B]">💰 Rental Price: ${singleCar.rental_price} /day</p>
                 </div>
               
@@ -126,11 +144,11 @@ const CarDetails = () => {
                         <p className="py-4 text-2xl">Per Day Price: <span className='italic'>${singleCar.rental_price}</span></p>
                         <p className='text-2xl py-4'><strong>Available:</strong> {singleCar.availability}</p>
                         <label htmlFor="startingDate" className='text-2xl'>Starting Date: </label>
-                        <input className="ml-1 border-2 border-black p-2 rounded-2xl" type="datetime-local" name="startingDate" id="start" onChange={handleDateChange}/>
+                        <input className="ml-1 border-2 border-black p-2 rounded-2xl" type="datetime-local" name="startingDate" value={startingDate} onChange={handleDateChange}/>
                         <br />
                         <br />
                         <label htmlFor="endingDate" className='text-2xl'>Ending Date: </label>
-                        <input className="ml-3 border-2 border-black p-2 rounded-2xl" type="datetime-local" name="endingDate" id="end" onChange={handleDateChange}/>
+                        <input className="ml-3 border-2 border-black p-2 rounded-2xl" type="datetime-local" name="endingDate" value={endingDate} onChange={handleDateChange}/>
                         <br />
                         <br />
                         <h1 className='text-2xl w-1/2 p-3 rounded-3xl '>Total Cost: <span className='italic'>${totalPrice}</span></h1>

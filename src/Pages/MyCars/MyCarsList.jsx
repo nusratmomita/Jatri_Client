@@ -48,6 +48,20 @@ const MyCarsList = ({ myCarsPromise }) => {
     e.preventDefault();
     const form = e.target;
 
+    if (
+          !form.car_model.value ||
+          !form.rental_price.value ||
+          !form.availability.value ||
+          !form.reg_no.value ||
+          !form.car_features.value ||
+          !form.car_description.value ||
+          !form.car_image.value ||
+          !form.car_location.value
+        ) {
+          toast.error("You must fill in all the fields to add a new car.");
+          return;
+        }
+
 
     const updateCar = {
       car_model: form.car_model.value,
@@ -116,7 +130,7 @@ const MyCarsList = ({ myCarsPromise }) => {
   return (
     <div className="winky-rough-regular">
       <>
-        {cars.length === 0 ? (
+        {cars.length === 0 ? 
           <div className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#f4f4f8] to-[#eae6ff] rounded-3xl p-10 shadow-lg max-w-xl mx-auto mt-20">
             <h1 className="text-3xl lg:text-4xl font-bold text-[#2D336B] mb-4">
               🚗 Alas! No Car Added
@@ -132,7 +146,7 @@ const MyCarsList = ({ myCarsPromise }) => {
               </button>
             </Link>
           </div>
-        ) : (
+         : 
           <>
             <h1 className="mt-25 mb-20 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
               All the cars created by YOU are shown here...
@@ -149,7 +163,7 @@ const MyCarsList = ({ myCarsPromise }) => {
                           <th className="py-3 px-4">Daily Rental Price</th>
                           <th className="py-3 px-4">Booking Count</th>
                           <th className="py-3 px-4">Availability</th>
-                          <th className="py-3 px-4">Date Added</th>
+                          <th className="py-3 px-4">Added On</th>
                           <th className="py-3 px-4">Actions</th>
                         </tr>
                       </thead>
@@ -327,7 +341,7 @@ const MyCarsList = ({ myCarsPromise }) => {
               </div>
             }
           </>
-        )}
+        }
       </>
     </div>
   );

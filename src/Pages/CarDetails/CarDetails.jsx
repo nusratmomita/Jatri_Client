@@ -21,7 +21,7 @@ const CarDetails = () => {
             const diff = endDate - startDate;
             const totalDays = Math.ceil(diff/ (1000 * 60 * 60 * 24));
 
-            const price = (singleCar.rental_price * totalDays)+singleCar.rental_price;
+            const price = (singleCar.rental_price * totalDays);
             setTotalPrice(price);
         }
         else{
@@ -42,6 +42,16 @@ const CarDetails = () => {
         }
     }
 
+    const bookedOn = new Date();
+    // console.log(bookedOn.toISOString());
+    // const day = bookedOn.getDate();
+    // const month = bookedOn.getMonth();
+    // const year = bookedOn.getFullYear();
+    // const hour = bookedOn.getHours();
+    // const minutes = bookedOn.getMinutes();
+
+    // console.log(day,month,year,hour,minutes)
+
 
     const handleConfirmationForm = (e) => {
         e.preventDefault();
@@ -60,6 +70,7 @@ const CarDetails = () => {
             bookingEnd : form.endingDate.value,
             totalPrice : totalPrice,
             bookingStatus : "Pending",
+            bookedOn : `${bookedOn.toISOString()}`,
             userEmail : user?.email
         }
 

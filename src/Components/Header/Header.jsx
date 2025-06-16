@@ -21,7 +21,7 @@ const Header = () => {
     }
 
     return (
-        <div className="navbar bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] shadow-sm p-7 rounded-[40px] mt-5">
+        <div className="navbar bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] shadow-sm p-7 rounded-[40px] mx-2 mt-10 overflow-x-hidden">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -80,6 +80,7 @@ const Header = () => {
                         <>
                             <img className="w-10 h-10 bg-white p-1 rounded-full" src={user?.photoURL} alt="userPhoto" />
                             <h1 className='text-[#2D336B] text-2xl font-bold'>Hi,{user?.displayName}</h1>
+                            <h1>{user?.email}</h1>
                         </>
                         :
                         <FaUserCircle className="w-15 h-15 bg-white p-1 rounded-full" size={25}></FaUserCircle>

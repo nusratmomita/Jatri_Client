@@ -20,7 +20,7 @@ const Banner = () => {
                     initial={{ opacity: 7, y: -200 }}
                     animate={{ opacity: 4, y: 0 }}
                     transition={{ duration: 1.2 }}
-                    className="text-6xl md:text-7xl text-[#7886C7] hover:text-[#8672f8]  font-extrabold leading-tight mb-6 animate-pulse"
+                    className="text-6xl md:text-7xl text-white font-extrabold leading-tight mb-6 animate-pulse"
                 >
                     Drive Your Dreams Today!!
                 </motion.h1>
@@ -32,7 +32,7 @@ const Banner = () => {
                 >
                     <Link 
                         to='/availableCars' 
-                        className="bg-[#7886C7] text-gray-900 hover:bg-[#B2A5FF] py-3 px-8 rounded-full text-xl font-bold transition duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl"
+                        className="bg-white text-gray-900 hover:bg-[#B2A5FF] py-3 px-8 rounded-full text-xl font-bold transition duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl"
                     >
                         View Available Cars
                     </Link>

@@ -7,7 +7,7 @@ const Root = () => {
     const location = useLocation();
     // console.log(location,location.pathname)
     return (
-        <div>
+        <div className='overflow-x-hidden'>
             {
                 location.pathname !== "*" && <Header></Header>
             }

@@ -10,7 +10,7 @@ const MyCarsList = ({ myCarsPromise }) => {
   const initialCars = use(myCarsPromise);
   const [cars , setCars] = useState(initialCars);
   const [sortBy , setSortBy] = useState("");
-  // console.log(cars);
+  console.log(cars);
 
   const { user } = useContext(AuthContext);
   const [email] = useState(user?.email);
@@ -166,11 +166,11 @@ const MyCarsList = ({ myCarsPromise }) => {
           </div>
          : 
           <>
-          <div className="mb-30 flex justify-between">
+          <div className="mb-30 flex flex-col lg:flex-row justify-between">
             <h1 className="mt-25 ml-15 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
                 All the cars created by YOU are shown here...
               </h1>
-            <select defaultValue="" onChange={(e) => setSortBy(e.target.value)} className="lg:mr-30 mt-30 p-3 rounded-2xl font-bold text-xl lg:w-[20%]">
+            <select defaultValue="" onChange={(e) => setSortBy(e.target.value)} className="lg:mr-30 mt-30 p-3 ml-30 lg:ml-0 rounded-2xl font-bold text-xl w-[50%] lg:w-[20%]">
               <option disabled value="">Sort by..</option>
               <option value="Oldest">Sort by Date:(Oldest)</option>
               <option value="Newest">Sort by Date:(Newest)</option>
@@ -178,68 +178,71 @@ const MyCarsList = ({ myCarsPromise }) => {
               <option value="Highest">Sort by Price:(Highest)</option>
             </select>
           </div>
-             <div className="m-20 flex lg:flex-row flex-col justify-between items-center ">
-              
-
-              <table className="winky-rough-regular w-full border-collapse shadow-lg rounded-2xl overflow-hidden">
-                <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] text-white">
-                  <tr className="text-3xl">
-                    <th className="py-4 px-6 text-left">Car Image</th>
-                    <th className="py-4 px-6 text-left">Car Model</th>
-                    <th className="py-4 px-6 text-left">Daily Price</th>
-                    <th className="py-4 px-6 text-left">Bookings</th>
-                    <th className="py-4 px-6 text-left">Availability</th>
-                    <th className="py-4 px-6 text-left">Added On</th>
-                    <th className="py-4 px-6 text-center">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white text-gray-800">
-                  {cars?.map((car) => (
-                    <tr key={car._id} className="border-t hover:bg-gray-50 transition duration-200">
-                      <td className="py-3 px-6">
-                        <img
-                          src={car.car_image}
-                          alt="car"
-                          className="w-20 h-20 object-cover rounded-xl shadow-md"
-                        />
-                      </td>
-                      <td className="py-3 px-6 font-medium text-2xl">{car.car_model}</td>
-                      <td className="py-3 px-6 text-2xl">${car.rental_price}</td>
-                      <td className="py-3 px-6 text-2xl">{car.car_booking_count}</td>
-                      <td className="py-3 px-6">
-                        <span
-                          className={`px-3 py-1 rounded-full font-semibold ${
-                            car.availability === "Available"
-                              ? "bg-green-100 text-green-700 text-2xl"
-                              : "bg-red-100 text-red-700 text-2xl"
-                          }`}
-                        >
-                          {car.availability}
-                        </span>
-                      </td>
-                      <td className="py-3 px-6 text-2xl">{addedCarDate(car.date)}</td>
-                      <td className="mt-5 py-3 px-6 flex justify-center items-center gap-2">
-                        <button
-                          onClick={() => {
-                            setCarId(car);
-                            document.getElementById("updateNow").showModal();
-                          }}
-                          className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition"
-                        >
-                          <AiFillEdit className="text-lg" /> Update
-                        </button>
-                        <button
-                          onClick={() => handleDeleteCar(car._id)}
-                          className="flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition"
-                        >
-                          <RiDeleteBin5Line className="text-lg" /> Delete
-                        </button>
-                      </td>
+            <div className="m-4 lg:m-20 flex lg:flex-row flex-col justify-between items-center">
+              <div className="w-full overflow-x-auto rounded-2xl shadow-lg">
+                <table className="winky-rough-regular min-w-[800px] w-full border-collapse">
+                  <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] text-white">
+                    <tr className="text-xl lg:text-3xl">
+                      <th className="py-4 px-6 text-left">Car Image</th>
+                      <th className="py-4 px-6 text-left">Car Model</th>
+                      <th className="py-4 px-6 text-left">Daily Price</th>
+                      <th className="py-4 px-6 text-left">Bookings</th>
+                      <th className="py-4 px-6 text-left">Availability</th>
+                      <th className="py-4 px-6 text-left">Added On</th>
+                      <th className="py-4 px-6 text-center">Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-white text-gray-800">
+                    {cars?.map((car) => (
+                      <tr key={car._id} className="border-t hover:bg-gray-50 transition duration-200">
+                        <td className="py-3 px-6">
+                          <img
+                            src={car.car_image}
+                            alt="car"
+                            className="w-16 h-16 lg:w-20 lg:h-20 object-cover rounded-xl shadow-md"
+                          />
+                        </td>
+                        <td className="py-3 px-6 font-medium text-2xl">{car.car_model}</td>
+                        <td className="py-3 px-6 text-2xl">${car.rental_price}</td>
+                        <td className="py-3 px-6 text-2xl">{car.car_booking_count}</td>
+                        <td className="py-3 px-6">
+                          <span
+                            className={`px-3 py-1 rounded-full font-semibold text-2xl ${
+                              car.availability === "Available"
+                                ? "bg-green-100 text-green-700"
+                                : "bg-red-100 text-red-700"
+                            }`}
+                          >
+                            {car.availability}
+                          </span>
+                        </td>
+                        <td className="py-3 px-6 text-2xl">{addedCarDate(car.date)}</td>
+                        <td className="py-3 px-6">
+                          <div className="flex flex-col lg:flex-row justify-center items-center gap-2">
+                            <button
+                              onClick={() => {
+                                setCarId(car);
+                                document.getElementById("updateNow").showModal();
+                              }}
+                              className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition text-base cursor-pointer"
+                            >
+                              <AiFillEdit className="text-lg" /> Update
+                            </button>
+                            <button
+                              onClick={() => handleDeleteCar(car._id)}
+                              className="flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition text-base cursor-pointer"
+                            >
+                              <RiDeleteBin5Line className="text-lg" /> Delete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
+
 
             <dialog id="updateNow" className="modal modal-bottom sm:modal-middle">
               <div className="modal-box bg-[#7886C7]">

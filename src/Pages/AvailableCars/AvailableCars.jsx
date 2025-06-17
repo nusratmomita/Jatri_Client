@@ -59,7 +59,7 @@ const AvailableCars = () => {
                 <h1 className='ml-30 text-5xl font-bold mt-20 text-violet-900'>
                     Total Available Car(s): {cars.length}
                 </h1>
-                <div className='flex justify-center items-center gap-4'>
+                <div className='ml-10 lg:ml-0 flex justify-center items-center gap-4'>
                     <label className="input mt-20 w-[100%]">
                         <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g

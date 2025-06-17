@@ -25,49 +25,49 @@ const RecentListing = ({carData}) => {
     }
     return (
         <div className="mt-40 my-24 px-4 text-center">
-      <h1 className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
-        <span className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
-          [ Recent Listing ]
-        </span>
-      </h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
+            <span className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
+              [ Recent Listing ]
+            </span>
+          </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-20 px-4 lg:px-20">
-        {carData.map((car) => (
-          <div
-            key={car._id}
-            className="relative card w-96 bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:shadow-2xl rounded-[2rem] transform hover:scale-[1.03] transition duration-300"
-          >
-            <figure className="px-6 pt-6">
-              <img
-                src={car.car_image}
-                alt="car"
-                className="rounded-xl h-48 object-cover"
-              />
-            </figure>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-20 px-4 lg:px-30 ml-10 lg:ml-0">
+            {carData.map((car) => (
+              <div
+                key={car._id}
+                className="relative card w-96 bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:shadow-2xl rounded-[2rem] transform hover:scale-[1.03] transition duration-300"
+              >
+                <figure className="px-6 pt-6">
+                  <img
+                    src={car.car_image}
+                    alt="car"
+                    className="rounded-xl h-48 object-cover"
+                  />
+                </figure>
 
-            <div className="absolute top-2 right-4 flex items-center gap-1 bg-[#FFF2AF] text-[#2D336B] font-semibold px-3 py-1 text-xl rounded-full shadow-md">
-              <FaRegCircleCheck size={16} />
-              {car.availability}
-            </div>
+                <div className="absolute top-2 right-4 flex items-center gap-1 bg-[#FFF2AF] text-[#2D336B] font-semibold px-3 py-1 text-xl rounded-full shadow-md">
+                  <FaRegCircleCheck size={16} />
+                  {car.availability}
+                </div>
 
-            <div className="card-body text-left space-y-2 text-[#2D336B]">
-              <h2 className="font-bold text-2xl">
-                <span className="text-[#493D9E]">Model:</span> {car.car_model}
-              </h2>
-              <h3 className="text-md text-2xl">
-                <span className="font-semibold text-[#7886C7] text-2xl">Rental Price:</span> ${car.rental_price}
-              </h3>
-              <h3 className="text-md text-2xl">
-                <span className="font-semibold text-[#7886C7]">Bookings:</span> {car.car_booking_count}
-              </h3>
-              <p className="italic text-[#2D336B] text-2xl">
-                Posted: <span className="font-semibold">{postedDate(car.date)}</span>
-              </p>
-            </div>
+                <div className="card-body text-left space-y-2 text-[#2D336B]">
+                  <h2 className="font-bold text-2xl">
+                    <span className="text-[#493D9E]">Model:</span> {car.car_model}
+                  </h2>
+                  <h3 className="text-md text-2xl">
+                    <span className="font-semibold text-[#7886C7] text-2xl">Rental Price:</span> ${car.rental_price}
+                  </h3>
+                  <h3 className="text-md text-2xl">
+                    <span className="font-semibold text-[#7886C7]">Bookings:</span> {car.car_booking_count}
+                  </h3>
+                  <p className="italic text-[#2D336B] text-2xl">
+                    Posted: <span className="font-semibold">{postedDate(car.date)}</span>
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
     );
 };
 

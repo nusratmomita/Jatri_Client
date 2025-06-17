@@ -17,7 +17,7 @@ const MyCarsList = ({ myCarsPromise }) => {
 
   useEffect(() => {
     if (!sortBy) return;
-    const url = `https://jatri-9cc51.web.app/cars/email?email=${email}&sort=${sortBy}`;
+    const url = `https://jatri-server.vercel.app/cars/email?email=${email}&sort=${sortBy}`;
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -92,7 +92,7 @@ const MyCarsList = ({ myCarsPromise }) => {
       car_location: form.car_location.value,
     };
 
-    fetch(`https://jatri-9cc51.web.app/cars/${carId._id}` , {
+    fetch(`https://jatri-server.vercel.app/cars/${carId._id}` , {
         method: "PUT",
         headers: {
             'content-type': "application/json"
@@ -121,7 +121,7 @@ const MyCarsList = ({ myCarsPromise }) => {
         confirmButtonText: "Yes, delete it!"
         }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`https://jatri-9cc51.web.app/cars/${id}`,{
+            fetch(`https://jatri-server.vercel.app/cars/${id}`,{
                 method: "DELETE",
             })
             .then(res=>res.json())
@@ -166,11 +166,11 @@ const MyCarsList = ({ myCarsPromise }) => {
           </div>
          : 
           <>
-          <div className="mb-20 flex lg:flex-row flex-col justify-between items-center ">
+          <div className="mb-30 flex justify-between">
             <h1 className="mt-25 ml-15 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
-              All the cars created by YOU are shown here...
-            </h1>
-            <select defaultValue="" className="lg:mr-30 mt-30 p-3 rounded-2xl font-bold text-xl lg:w-[20%]" onChange={(e) => setSortBy(e.target.value)}>
+                All the cars created by YOU are shown here...
+              </h1>
+            <select defaultValue="" onChange={(e) => setSortBy(e.target.value)} className="lg:mr-30 mt-30 p-3 rounded-2xl font-bold text-xl lg:w-[20%]">
               <option disabled value="">Sort by..</option>
               <option value="Oldest">Sort by Date:(Oldest)</option>
               <option value="Newest">Sort by Date:(Newest)</option>
@@ -178,195 +178,93 @@ const MyCarsList = ({ myCarsPromise }) => {
               <option value="Highest">Sort by Price:(Highest)</option>
             </select>
           </div>
-            {
-              <div className="-mt-30 overflow-x-auto">
-                <div className="flex justify-center items-center min-h-screen p-16">
-                  <div className="overflow-x-auto w-full max-w-8xl rounded-2xl border border-gray-300 shadow-lg bg-white">
-                    <table className="min-w-full table-auto text-2xl font-bold rounded-2xl overflow-hidden">
-                      <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] w-full rounded-t-2xl text-gray-700">
-                        <tr className="text-2xl text-center">
-                          <th className="py-3 px-4">Car Image</th>
-                          <th className="py-3 px-4">Car Model</th>
-                          <th className="py-3 px-4">Daily Rental Price</th>
-                          <th className="py-3 px-4">Booking Count</th>
-                          <th className="py-3 px-4">Availability</th>
-                          <th className="py-3 px-4">Added On</th>
-                          <th className="py-3 px-4">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {cars?.map((car) => (
-                          <tr
-                            key={car._id}
-                            className="border-t hover:bg-gray-100 text-center"
-                          >
-                            <td>
-                              <img
-                                className="m-5 w-15 h-15 rounded-3xl"
-                                src={car.car_image}
-                                alt="carImage"
-                              />
-                            </td>
-                            <td className="py-2 px-8">{car.car_model}</td>
-                            <td className="py-2 px-4">$ {car.rental_price}</td>
-                            <td className="py-2 px-6">
-                              {car.car_booking_count}
-                            </td>
-                            <td className="py-2 px-6">{car.availability}</td>
-                            <td className="py-2 px-6">
-                              {addedCarDate(car.date)}
-                            </td>
-                            <td className="py-2 px-6 flex gap-4 justify-center mt-5">
-                              <button
-                                onClick={() => {
-                                    setCarId(car);
-                                    document
-                                        .getElementById("updateNow")
-                                        .showModal()
-                                }
-                                }
-                                className="cursor-pointer flex gap-2 justify-center items-center 
-                                        bg-gradient-to-r from-[#7886C7] to-[#493D9E] hover:from-[#493D9E] hover:to-[#7886C7] 
-                                        text-white font-semibold py-1.5 px-4 rounded-md transition duration-300 shadow-md hover:shadow-xl"
-                              >
-                                <AiFillEdit></AiFillEdit>
-                                Update
-                              </button>
-                              
-                              <dialog
-                                id="updateNow"
-                                className="modal modal-bottom sm:modal-middle">
-                                <div className="modal-box bg-[#7886C7] ">
-                                <div className="rounded-3xl p-12 text-center space-y-5">
-                                    <h3 className="text-6xl text-[#FFF2AF]">Update</h3>
-                                    <form onSubmit={handleUpdateForm}>
-                                        <div className="mt-15 grid grid-cols-1 gap-5">
-                                        {/* car model */}
-                                        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                                            <label className="label text-xl text-[#1B1A1A] font-bold">
-                                                Car Model
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="car_model"
-                                                className="input w-full text-xl"
-                                                defaultValue={car.car_model}
-                                            />
-                                        </fieldset>
-                                        {/* car price */}
-                                        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                                            <label className="label text-xl text-[#1B1A1A] font-bold">
-                                                Daily Rental Price
-                                            </label>
-                                            <input
-                                                type="number"
-                                                name="rental_price"
-                                                className="input w-full text-xl"
-                                                defaultValue={car.rental_price}
-                                            />
-                                        </fieldset>
-                                        {/* availability */}
-                                        <fieldset className="raleway-font fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                                            <label className="label text-xl text-[#1B1A1A] font-bold">
-                                                Availability
-                                            </label>
-                                            <select
-                                                name="availability"
-                                                className="text-xl text-[#1B1A1A] font-bold"
-                                            >
-                                                <option value="Available">Available</option>
-                                                <option value="Unavailable">Unavailable</option>
-                                            </select>
-                                        </fieldset>
-                                        {/* Vehicle Registration Number */}
-                                        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                                            <label className="label text-xl text-[#1B1A1A] font-bold">
-                                                Vehicle Registration No
-                                            </label>
-                                            <input
-                                                type="tel"
-                                                name="reg_no"
-                                                className="input w-full text-xl"
-                                                defaultValue={car.reg_no}
-                                            />
-                                        </fieldset>
-                                        {/* Features */}
-                                        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                                            <label className="label text-xl text-[#1B1A1A] font-bold">
-                                                Car Features
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="car_features"
-                                                className="input w-full text-xl"
-                                                defaultValue={car.car_features}
-                                            />
-                                        </fieldset>
-                                        {/* Description */}
-                                        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                                            <label className="label text-xl text-[#1B1A1A] font-bold">
-                                                Car Description
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="car_description"
-                                                className="input w-full text-xl"
-                                                defaultValue={car.car_description}
-                                            />
-                                        </fieldset>
-                                        {/* Image */}
-                                        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                                            <label className="label text-xl text-[#1B1A1A] font-bold">
-                                                Car Image
-                                            </label>
-                                            <input
-                                                type="url"
-                                                name="car_image"
-                                                className="input w-full text-xl"
-                                                defaultValue={car.car_image}
-                                            />
-                                        </fieldset>
-                                        {/* Location */}
-                                        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
-                                            <label className="label text-xl text-[#1B1A1A] font-bold">
-                                                Location
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="car_location"
-                                                className="input w-full text-xl"
-                                                defaultValue={car.car_location}
-                                            />
-                                        </fieldset>
-                                        <div className="modal-action">
-                                            <button type="submit" className="cursor-pointer w-1/2 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-2 text-lg font-bold text-black 
-                                            shadow-md hover:shadow-xl transition duration-300">Update </button>
-                                            <button type="button" className="cursor-pointer w-1/2 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-2 text-lg font-bold text-black shadow-md hover:shadow-xl transition duration-300" 
-                                                onClick={()=> document.getElementById('updateNow').close()}>Cancel </button>                                    
-                                        </div>
-                                    </div>
-                                    </form>
-                                </div>
-                                </div>
-                              </dialog>
+             <div className="m-20 flex lg:flex-row flex-col justify-between items-center ">
+              
 
-                              <button
-                                onClick={()=> handleDeleteCar(car._id)}
-                                className="cursor-pointer flex gap-2 justify-center items-center 
-                                            bg-gradient-to-r from-[#F87171] to-[#B91C1C] hover:from-[#B91C1C] hover:to-[#F87171] 
-                                            text-white font-semibold py-1.5 px-4 rounded-md transition duration-300 shadow-md hover:shadow-xl"
-                              >
-                                <RiDeleteBin5Line></RiDeleteBin5Line>Delete
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+              <table className="winky-rough-regular w-full border-collapse shadow-lg rounded-2xl overflow-hidden">
+                <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] text-white">
+                  <tr className="text-3xl">
+                    <th className="py-4 px-6 text-left">Car Image</th>
+                    <th className="py-4 px-6 text-left">Car Model</th>
+                    <th className="py-4 px-6 text-left">Daily Price</th>
+                    <th className="py-4 px-6 text-left">Bookings</th>
+                    <th className="py-4 px-6 text-left">Availability</th>
+                    <th className="py-4 px-6 text-left">Added On</th>
+                    <th className="py-4 px-6 text-center">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white text-gray-800">
+                  {cars?.map((car) => (
+                    <tr key={car._id} className="border-t hover:bg-gray-50 transition duration-200">
+                      <td className="py-3 px-6">
+                        <img
+                          src={car.car_image}
+                          alt="car"
+                          className="w-20 h-20 object-cover rounded-xl shadow-md"
+                        />
+                      </td>
+                      <td className="py-3 px-6 font-medium text-2xl">{car.car_model}</td>
+                      <td className="py-3 px-6 text-2xl">${car.rental_price}</td>
+                      <td className="py-3 px-6 text-2xl">{car.car_booking_count}</td>
+                      <td className="py-3 px-6">
+                        <span
+                          className={`px-3 py-1 rounded-full font-semibold ${
+                            car.availability === "Available"
+                              ? "bg-green-100 text-green-700 text-2xl"
+                              : "bg-red-100 text-red-700 text-2xl"
+                          }`}
+                        >
+                          {car.availability}
+                        </span>
+                      </td>
+                      <td className="py-3 px-6 text-2xl">{addedCarDate(car.date)}</td>
+                      <td className="mt-5 py-3 px-6 flex justify-center items-center gap-2">
+                        <button
+                          onClick={() => {
+                            setCarId(car);
+                            document.getElementById("updateNow").showModal();
+                          }}
+                          className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition"
+                        >
+                          <AiFillEdit className="text-lg" /> Update
+                        </button>
+                        <button
+                          onClick={() => handleDeleteCar(car._id)}
+                          className="flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition"
+                        >
+                          <RiDeleteBin5Line className="text-lg" /> Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <dialog id="updateNow" className="modal modal-bottom sm:modal-middle">
+              <div className="modal-box bg-[#7886C7]">
+                <form onSubmit={handleUpdateForm} className="space-y-5 p-5 text-left">
+                  <h3 className="text-4xl text-[#FFF2AF] text-center">Update Car Info</h3>
+
+                  <input name="car_model" type="text" defaultValue={carId?.car_model} className="input w-full" placeholder="Car Model" />
+                  <input name="rental_price" type="number" defaultValue={carId?.rental_price} className="input w-full" placeholder="Daily Rental Price" />
+                  <select name="availability" defaultValue={carId?.availability} className="input w-full">
+                    <option value="Available">Available</option>
+                    <option value="Unavailable">Unavailable</option>
+                  </select>
+                  <input name="reg_no" type="text" defaultValue={carId?.reg_no} className="input w-full" placeholder="Vehicle Registration No" />
+                  <input name="car_features" type="text" defaultValue={carId?.car_features?.join(", ")} className="input w-full" placeholder="Car Features (comma-separated)" />
+                  <input name="car_description" type="text" defaultValue={carId?.car_description?.join(", ")} className="input w-full" placeholder="Car Description (comma-separated)" />
+                  <input name="car_image" type="url" defaultValue={carId?.car_image} className="input w-full" placeholder="Image URL" />
+                  <input name="car_location" type="text" defaultValue={carId?.car_location} className="input w-full" placeholder="Location" />
+
+                  <div className="modal-action flex justify-between">
+                    <button type="submit" className="btn bg-yellow-400">Update</button>
+                    <button type="button" onClick={() => document.getElementById("updateNow").close()} className="btn bg-gray-300">Cancel</button>
                   </div>
-                </div>
+                </form>
               </div>
-            }
+            </dialog>
           </>
         }
       </>

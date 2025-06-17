@@ -1,9 +1,4 @@
-export const myCarsPromise = (email,accessToken) => {
-    return fetch(`https://jatri-server.vercel.app/cars/email?email=${email}`, {
-        headers: {
-            authorization : `Bearer ${accessToken}`
-        }
-    }
-)
+export const myCarsPromise = (email) => {
+    return fetch(`https://jatri-server.vercel.app/cars/email?email=${email}`)
     .then(res=>res.json());
 }

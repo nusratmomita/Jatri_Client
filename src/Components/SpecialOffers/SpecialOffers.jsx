@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
+import { Link } from 'react-router';
 const SpecialOffers = () => {
     return (
          <div className='mt-40 mb-20 my-24 px-4 text-center'>
@@ -19,9 +20,11 @@ const SpecialOffers = () => {
                     >
                         <h3 className="text-2xl font-semibold text-[#493D9E] mb-3">🚗 Get 15% off for weekend rentals!</h3>
                         <p className="text-[#4B5563] mb-5">Book your weekend escape now and enjoy discounted rates on all rides.</p>
-                        <button className="bg-[#493D9E] text-white px-6 py-2 rounded-full hover:bg-[#372f86] transition-all duration-300">
-                            Book Now
-                        </button>
+                        <Link to='/availableCars'> 
+                            <button className="bg-[#493D9E] text-white px-6 py-2 rounded-full hover:bg-[#372f86] transition-all duration-300">
+                                Book Now
+                            </button>
+                        </Link>
                     </motion.div>
 
                     
@@ -33,9 +36,11 @@ const SpecialOffers = () => {
                     >
                         <h3 className="text-2xl font-semibold text-[#493D9E] mb-3">🎁 Luxury cars at $99/day this holiday season!</h3>
                         <p className="text-[#4B5563] mb-5">Experience luxury like never before — only for a limited time.</p>
-                        <button className="bg-[#493D9E] text-white px-6 py-2 rounded-full hover:bg-[#372f86] transition-all duration-300">
-                         Learn More
-                        </button>
+                        <Link to='/'>
+                            <button className="bg-[#493D9E] text-white px-6 py-2 rounded-full hover:bg-[#372f86] transition-all duration-300">
+                                Learn More
+                            </button>
+                        </Link>
                     </motion.div>
                 </div>
             </section>

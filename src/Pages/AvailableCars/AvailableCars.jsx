@@ -13,7 +13,7 @@ const AvailableCars = () => {
 
     useEffect(() => {
         if (!sortBy) return;
-        const url = `http://localhost:3000/cars?sort=${sortBy}`
+        const url = `https://jatri-server.vercel.app/cars?sort=${sortBy}`
         fetch(url)
           .then(res => res.json())
           .then(data => {
@@ -45,7 +45,7 @@ const AvailableCars = () => {
     }
 
     const handleSearch = () => {
-        fetch(`http://localhost:3000/cars?searchText=${searchText}`)
+        fetch(`https://jatri-server.vercel.app/cars?searchText=${searchText}`)
         .then((res)=>res.json())
         .then((data)=>{
             // console.log(data)
@@ -80,7 +80,7 @@ const AvailableCars = () => {
                                     setSearchText(e.target.value);
 
                                     if(e.target.value === ''){
-                                        fetch("http://localhost:3000/cars")
+                                        fetch("https://jatri-server.vercel.app/cars")
                                         .then(res=>res.json())
                                         .then(data=>{
                                             setCars(data);
@@ -187,32 +187,32 @@ const AvailableCars = () => {
                             </figure>
 
                             <div className="card-body text-left px-6 pb-6">
-                                <h2 className="card-title text-3xl font-bold text-violet-900 mb-2">
-                                    {car.car_model}
-                                </h2>
+                            <h2 className="card-title text-4xl font-bold text-violet-900 mb-2">
+                                {car.car_model}
+                            </h2>
 
-                                <ul className="list-disc list-inside space-y-1 text-lg text-gray-800 mb-4">
-                                    {car.car_description.map((description, index) => (
-                                        <li key={index}>{description}</li>
-                                    ))}
-                                </ul>
-                                <div>
-                                    <h1>Daily Rent: ${car.rental_price}/day</h1>
-                                    <h1>Added On: {car.date}</h1>
-                                </div>
-                                <h2 className="flex gap-1 justify-center items-center rounded-3xl border-purple-300 bg-purple-200 w-1/3 text-center p-3 text-lg font-medium  text-violet-900 mb-2">
-                                    <IoMdCheckmarkCircleOutline size={30}></IoMdCheckmarkCircleOutline>{car.status}
-                                </h2>
-                                
-                                <div className="card-actions mt-auto">
-                                    <Link to={`/carDetails/${car._id}`} className="w-full flex justify-center items-center gap-4 cursor-pointer py-2 
-                                        rounded-xl bg-gradient-to-r from-[#493D9E] to-[#7886C7] text-white text-lg 
-                                        font-semibold hover:brightness-110 transition duration-300">          
-                                    <img className="w-12 h-12" src={Car} alt="car" />
-                                        Book Now
-                                    </Link>
-                                </div>
+                            <ul className="list-disc list-inside space-y-1 text-2xl text-gray-800 mb-4">
+                                {car.car_description.map((description, index) => (
+                                    <li key={index}>{description}</li>
+                                ))}
+                            </ul>
+                            <div>
+                                <h1 className='flex items-center gap-2 text-lg'>Daily Rent: <span className='flex justify-center items-center gap-1 text-2xl'><FaSackDollar size={20} color='purple'></FaSackDollar>{car.rental_price} /day</span></h1>
+                                <h1 className='text-lg'>Added On: <span className='text-2xl'>{addedCarDate(car.date)}</span></h1>
                             </div>
+                            <h2 className="flex gap-1 justify-center items-center rounded-3xl border-purple-300 bg-purple-200 w-1/3 text-center p-3 text-lg font-medium  text-violet-900 mb-2">
+                                <IoMdCheckmarkCircleOutline size={30}></IoMdCheckmarkCircleOutline>{car.status}
+                            </h2>
+                            
+                            <div className="card-actions mt-auto">
+                                <Link to={`/carDetails/${car._id}`} className="w-full flex justify-center items-center gap-4 cursor-pointer py-2 
+                                    rounded-xl bg-gradient-to-r from-[#493D9E] to-[#7886C7] text-white text-lg 
+                                    font-semibold hover:brightness-110 transition duration-300">          
+                                <img className="w-12 h-12" src={Car} alt="car" />
+                                    Book Now
+                                </Link>
+                            </div>
+                        </div>
                         </div>
                     ))}
                 </div>

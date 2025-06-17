@@ -80,7 +80,7 @@ const Header = () => {
                         <>
                             <img className="w-10 h-10 bg-white p-1 rounded-full" src={user?.photoURL} alt="userPhoto" />
                             <h1 className='text-[#2D336B] text-2xl font-bold'>Hi,{user?.displayName}</h1>
-                            <h1>{user?.email}</h1>
+                            {/* <h1>{user?.email}</h1> */}
                         </>
                         :
                         <FaUserCircle className="w-15 h-15 bg-white p-1 rounded-full" size={25}></FaUserCircle>

@@ -50,7 +50,7 @@ const AddCars = () => {
     // console.log(addCarData);
 
     axios
-      .post("http://localhost:3000/cars", addCarData , {
+      .post("https://jatri-server.vercel.app/cars", addCarData , {
         headers: {
           Authorization: `Bearer ${user?.accessToken}`
         }
@@ -59,8 +59,8 @@ const AddCars = () => {
         // console.log(data.data);
         toast.success("New car added successfully!");
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        // console.log(error);
       });
 
     form.reset();

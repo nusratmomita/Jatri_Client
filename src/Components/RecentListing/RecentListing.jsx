@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import RecentList from './RecentList';
+// import RecentList from './RecentList';
 import { FaRegCircleCheck } from "react-icons/fa6";
 
 const RecentListing = ({carData}) => {
-    console.log(carData)
+    // console.log(carData)
 
     const postedDate = (carDate) => {
         const currentDate = new Date();

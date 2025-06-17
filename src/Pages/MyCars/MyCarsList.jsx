@@ -17,7 +17,7 @@ const MyCarsList = ({ myCarsPromise }) => {
 
   useEffect(() => {
     if (!sortBy) return;
-    const url = `http://localhost:3000/cars/email?email=${email}&sort=${sortBy}`;
+    const url = `https://jatri-9cc51.web.app/cars/email?email=${email}&sort=${sortBy}`;
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -92,7 +92,7 @@ const MyCarsList = ({ myCarsPromise }) => {
       car_location: form.car_location.value,
     };
 
-    fetch(`http://localhost:3000/cars/${carId._id}` , {
+    fetch(`https://jatri-9cc51.web.app/cars/${carId._id}` , {
         method: "PUT",
         headers: {
             'content-type': "application/json"
@@ -121,12 +121,12 @@ const MyCarsList = ({ myCarsPromise }) => {
         confirmButtonText: "Yes, delete it!"
         }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`http://localhost:3000/cars/${id}`,{
+            fetch(`https://jatri-9cc51.web.app/cars/${id}`,{
                 method: "DELETE",
             })
             .then(res=>res.json())
             .then((data)=>{
-                console.log(data)
+                // console.log(data)
                 if(data.deletedCount)
                 {
                     Swal.fire({
@@ -195,7 +195,7 @@ const MyCarsList = ({ myCarsPromise }) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {cars.map((car) => (
+                        {cars?.map((car) => (
                           <tr
                             key={car._id}
                             className="border-t hover:bg-gray-100 text-center"

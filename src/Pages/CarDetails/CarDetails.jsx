@@ -75,9 +75,9 @@ const CarDetails = () => {
             userEmail : user?.email
         }
 
-        axios.post('http://localhost:3000/bookings', bookingInfo)
+        axios.post('https://jatri-server.vercel.app/bookings', bookingInfo)
         .then(() => {
-            return axios.patch(`http://localhost:3000/cars/bookings/${singleCar._id}`);
+            return axios.patch(`https://jatri-server.vercel.app/cars/bookings/${singleCar._id}`);
         })
         .then(() => {
             setSingleCar((prev) => ({

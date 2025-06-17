@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 const MyBookingList = ({myBookingsPromise}) => {
     const initialBookings = use(myBookingsPromise);
     const [bookings , setBookings] = useState(initialBookings);
-    console.log(bookings)
+    // console.log(bookings)
 
 
     const [startingDate , setStartingDate] = useState('');
@@ -46,7 +46,7 @@ const MyBookingList = ({myBookingsPromise}) => {
       const dailyRent = currentBooking.rentalPrice;
       const newPrice = diff * dailyRent; 
 
-      axios.patch(`http://localhost:3000/bookings/${currentBookingID}` ,{
+      axios.patch(`https://jatri-server.vercel.app/bookings/${currentBookingID}` ,{
         bookingStart : startingDate,
         bookingEnd : endingDate,
         bookingStatus: "Confirmed",
@@ -81,7 +81,7 @@ const MyBookingList = ({myBookingsPromise}) => {
 
       Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "Are you sure you want to cancel this booking?!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -89,12 +89,12 @@ const MyBookingList = ({myBookingsPromise}) => {
       confirmButtonText: "Yes, cancel it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.patch(`http://localhost:3000/bookings/${id}` ,{
+        axios.patch(`https://jatri-server.vercel.app/bookings/${id}` ,{
         bookingStatus: "Canceled"
       })
       .then((res)=>
       {
-        console.log(res.data)
+        // console.log(res.data)
         if(res.data.modifiedCount){
           toast.success("You've canceled the booking");
 
@@ -206,7 +206,7 @@ const MyBookingList = ({myBookingsPromise}) => {
                                               <button onClick={(e)=> handleUpdateDate(e)} type="submit" className="cursor-pointer w-1/2 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-2 text-lg font-bold text-black 
                                               shadow-md hover:shadow-xl transition duration-300">Confirm</button>
                                               <button type="button" className="cursor-pointer w-1/2 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-2 text-lg font-bold text-black shadow-md hover:shadow-xl transition duration-300" 
-                                                  onClick={()=> document.getElementById('updateNow').close()}>Close</button>                                    
+                                                  onClick={()=> document.getElementById('updateNow').close()}>Cancel</button>                                    
                                           </div>
                                     </div>
                                 </div>

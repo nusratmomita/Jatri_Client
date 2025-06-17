@@ -57,8 +57,8 @@ const Register = () => {
             })
 
         })
-        .catch((error)=>{
-            console.log(error)
+        .catch(()=>{
+            // console.log(error)
             toast.error("You've put invalid credentials. Please try again.")
         })
 
@@ -73,8 +73,8 @@ const Register = () => {
             navigate('/');
         },1500)
         })
-        .catch((error)=>{
-            console.log(error)
+        .catch(()=>{
+            // console.log(error)
             toast.error("You've put invalid credentials. Please try again.")
         })
     }

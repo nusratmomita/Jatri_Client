@@ -8,7 +8,7 @@ import { useLoaderData } from 'react-router';
 
 const Home = () => {
     const carData = useLoaderData();
-    console.log(carData)
+    // console.log(carData)
     return (
         <div>
             <Banner></Banner>

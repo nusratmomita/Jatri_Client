@@ -1,5 +1,5 @@
 export const myBookingsPromise = (email,accessToken) => {
-    return fetch(`http://localhost:3000/bookings/email?email=${email}` , {
+    return fetch(`https://jatri-server.vercel.app/bookings/email?email=${email}` , {
         headers: {
             authorization : `Bearer ${accessToken}`
         }

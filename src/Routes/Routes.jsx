@@ -20,12 +20,12 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 path: "/",
-                loader: ()=> fetch('http://localhost:3000/cars/filteredData'),
+                loader: ()=> fetch('https://jatri-server.vercel.app/cars/filteredData'),
                 Component: Home
             },
             {
                 path: "/availableCars",
-                loader: ()=> fetch('http://localhost:3000/cars'),
+                loader: ()=> fetch('https://jatri-server.vercel.app/cars'),
                 Component: AvailableCars
             },
             {
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/carDetails/:id",
-                loader: ({params}) => fetch(`http://localhost:3000/cars/${params.id}`),
+                loader: ({params}) => fetch(`https://jatri-server.vercel.app/cars/${params.id}`),
                 Component: CarDetails
             },
             {

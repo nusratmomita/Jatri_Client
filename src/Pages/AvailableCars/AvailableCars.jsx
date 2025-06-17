@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import Car from '../../assets/Car.png'
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
@@ -9,6 +9,18 @@ const AvailableCars = () => {
     const [toggleStyle , setToggleStyle] = useState(true);
     const [cars , setCars] = useState(useLoaderData());
     const [searchText , setSearchText] = useState('');
+    const [sortBy , setSortBy] = useState("");
+
+    useEffect(() => {
+        if (!sortBy) return;
+        const url = `http://localhost:3000/cars?sort=${sortBy}`
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            // console.log(data)
+            setCars(data)});
+        }, 
+      [sortBy]);
    
     const addedCarDate = (CarDate) => {
         const date = new Date(CarDate);
@@ -85,12 +97,12 @@ const AvailableCars = () => {
                                
                                placeholder="Search..." />
                     </label>
-                    <select defaultValue="Sort by.." className="mt-20 text-xl font-bold select w-[100%]">
-                        <option disabled={true}>Sort by..</option>
-                        <option>Sort by Date:(Oldest)</option>
-                        <option>Sort by Price:(Highest)</option>
-                        <option>Sort by Price:(Lowest)</option>
-                        <option>Sort by Price:(Highest)</option>
+                    <select onChange={(e) => setSortBy(e.target.value)} defaultValue="Sort by.." className="mt-20 text-xl font-bold select w-[100%]">
+                        <option disabled value="">Sort by..</option>
+                        <option value="Oldest">Sort by Date:(Oldest)</option>
+                        <option value="Newest">Sort by Date:(Newest)</option>
+                        <option value="Lowest">Sort by Price:(Lowest)</option>
+                        <option value="Highest">Sort by Price:(Highest)</option>
                     </select>
                     <button onClick={handleToggleBtn} className='cursor-pointer w-full mr-20 mt-20 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-4 text-2xl font-bold text-black shadow-md hover:shadow-xl transition duration-300'>
                         Toggle Style

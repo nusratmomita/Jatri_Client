@@ -1,14 +1,32 @@
-import React, { use, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AiFillEdit, AiTwotonePlusCircle } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Authentication/AuthContext";
 
 const MyCarsList = ({ myCarsPromise }) => {
-  const cars = use(myCarsPromise);
-  console.log(cars);
-  const [myCars , setMyCars] = useState(cars);
+  const initialCars = use(myCarsPromise);
+  const [cars , setCars] = useState(initialCars);
+  const [sortBy , setSortBy] = useState("");
+  // console.log(cars);
+
+  const { user } = useContext(AuthContext);
+  const [email] = useState(user?.email);
+
+  useEffect(() => {
+    if (!sortBy) return;
+    const url = `http://localhost:3000/cars/email?email=${email}&sort=${sortBy}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data)
+        setCars(data)});
+    }, 
+  [sortBy,email]);
+
+  // const [myCars , setMyCars] = useState(cars);
 
   let [carId , setCarId] = useState(null);
 
@@ -119,8 +137,8 @@ const MyCarsList = ({ myCarsPromise }) => {
                 }
                 toast.success("The car has been deleted successfully!");
 
-                const remainingCars = myCars.filter((cars)=> cars._id !== id);
-                setMyCars(remainingCars)
+                const remainingCars = cars.filter((cars)=> cars._id !== id);
+                setCars(remainingCars)
             });
         }
     });
@@ -148,9 +166,18 @@ const MyCarsList = ({ myCarsPromise }) => {
           </div>
          : 
           <>
-            <h1 className="mt-25 mb-20 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
+          <div className="mb-20 flex lg:flex-row flex-col justify-between items-center ">
+            <h1 className="mt-25 ml-15 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
               All the cars created by YOU are shown here...
             </h1>
+            <select defaultValue="" className="lg:mr-30 mt-30 p-3 rounded-2xl font-bold text-xl lg:w-[20%]" onChange={(e) => setSortBy(e.target.value)}>
+              <option disabled value="">Sort by..</option>
+              <option value="Oldest">Sort by Date:(Oldest)</option>
+              <option value="Newest">Sort by Date:(Newest)</option>
+              <option value="Lowest">Sort by Price:(Lowest)</option>
+              <option value="Highest">Sort by Price:(Highest)</option>
+            </select>
+          </div>
             {
               <div className="-mt-30 overflow-x-auto">
                 <div className="flex justify-center items-center min-h-screen p-16">
@@ -168,7 +195,7 @@ const MyCarsList = ({ myCarsPromise }) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {myCars.map((car) => (
+                        {cars.map((car) => (
                           <tr
                             key={car._id}
                             className="border-t hover:bg-gray-100 text-center"

@@ -1,4 +1,8 @@
-export const myBookingsPromise = (email) => {
-    return fetch(`http://localhost:3000/bookings/email?email=${email}`)
+export const myBookingsPromise = (email,accessToken) => {
+    return fetch(`http://localhost:3000/bookings/email?email=${email}` , {
+        headers: {
+            authorization : `Bearer ${accessToken}`
+        }
+    })
     .then(res=>res.json());
 } 

@@ -50,7 +50,11 @@ const AddCars = () => {
     // console.log(addCarData);
 
     axios
-      .post("http://localhost:3000/cars", addCarData)
+      .post("http://localhost:3000/cars", addCarData , {
+        headers: {
+          Authorization: `Bearer ${user?.accessToken}`
+        }
+      })
       .then(() => {
         // console.log(data.data);
         toast.success("New car added successfully!");

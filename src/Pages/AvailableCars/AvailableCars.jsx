@@ -109,7 +109,6 @@ const AvailableCars = () => {
                     </button>
                 </div>
             </div>
-
             {
                 cars.length === 0 ?
                 <div className="mt-40 flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#f4f4f8] to-[#eae6ff] rounded-3xl p-10 shadow-lg max-w-xl mx-auto">

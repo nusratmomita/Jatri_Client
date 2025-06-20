@@ -3,6 +3,8 @@ import { Link, useLoaderData } from 'react-router';
 import Car from '../../assets/Car.png'
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { FaSackDollar } from "react-icons/fa6";
+import { FaListUl } from "react-icons/fa";
+import { BsFillGridFill } from "react-icons/bs";
 
 
 const AvailableCars = () => {
@@ -104,9 +106,17 @@ const AvailableCars = () => {
                         <option value="Lowest">Sort by Price:(Lowest)</option>
                         <option value="Highest">Sort by Price:(Highest)</option>
                     </select>
-                    <button onClick={handleToggleBtn} className='cursor-pointer w-full mr-20 mt-20 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-4 text-2xl font-bold text-black shadow-md hover:shadow-xl transition duration-300'>
-                        Toggle Style
-                    </button>
+                    {
+                        toggleStyle ? 
+                        <button onClick={handleToggleBtn} className='flex gap-5 justify-center items-center cursor-pointer w-full mr-20 mt-20 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-4 text-2xl font-bold text-black shadow-md hover:shadow-xl transition duration-300'>
+                            <FaListUl></FaListUl>List View
+                        </button>
+                        :
+                        <button onClick={handleToggleBtn} className='flex gap-5 justify-center items-center cursor-pointer w-full mr-20 mt-20 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-4 text-2xl font-bold text-black shadow-md hover:shadow-xl transition duration-300'>
+                            <BsFillGridFill></BsFillGridFill>Grid View
+                        </button>
+                    }
+                    
                 </div>
             </div>
             {
@@ -120,6 +130,7 @@ const AvailableCars = () => {
                 toggleStyle ? 
                 <div className='m-10 lg:m-30 grid justify-center items-center gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {cars.map((car) => (
+                    
                     <div
                         key={car._id}
                         className="relative card h-[650px] bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
@@ -182,7 +193,7 @@ const AvailableCars = () => {
                                 <img
                                     src={car.car_image}
                                     alt={car.car_model}
-                                    className="rounded-2xl w-full h-48 lg:w-11/12 lg:h-120 object-cover shadow-md"
+                                    className="rounded-2xl w-full h-48 lg:w-11/12 lg:h-80 object-cover shadow-md"
                                 />
                             </figure>
 
@@ -200,7 +211,7 @@ const AvailableCars = () => {
                                 <h1 className='flex items-center gap-2 text-lg'>Daily Rent: <span className='flex justify-center items-center gap-1 text-2xl'><FaSackDollar size={20} color='purple'></FaSackDollar>{car.rental_price} /day</span></h1>
                                 <h1 className='text-lg'>Added On: <span className='text-2xl'>{addedCarDate(car.date)}</span></h1>
                             </div>
-                            <h2 className="flex gap-1 justify-center items-center rounded-3xl border-purple-300 bg-purple-200 w-1/3 text-center p-3 text-lg font-medium  text-violet-900 mb-2">
+                            <h2 className="flex gap-1 justify-center items-center rounded-3xl border-purple-300 bg-purple-200 w-[150px] text-center p-3 text-lg font-medium  text-violet-900 mb-2">
                                 <IoMdCheckmarkCircleOutline size={30}></IoMdCheckmarkCircleOutline>{car.status}
                             </h2>
                             

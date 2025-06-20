@@ -170,8 +170,8 @@ const MyCarsList = ({ myCarsPromise }) => {
             <h1 className="mt-25 ml-15 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
                 All the cars created by YOU are shown here...
               </h1>
-            <select defaultValue="" onChange={(e) => setSortBy(e.target.value)} className="lg:mr-30 mt-30 p-3 ml-30 lg:ml-0 rounded-2xl font-bold text-xl w-[50%] lg:w-[20%]">
-              <option disabled value="">Sort by..</option>
+            <select defaultValue="" onChange={(e) => setSortBy(e.target.value)} className="lg:mr-30 mt-30 p-3 ml-30 lg:ml-0 rounded-2xl font-bold text-xl w-[50%] lg:w-[20%] border-2 border-black">
+              <option>Sort by..</option>
               <option value="Oldest">Sort by Date:(Oldest)</option>
               <option value="Newest">Sort by Date:(Newest)</option>
               <option value="Lowest">Sort by Price:(Lowest)</option>
@@ -181,25 +181,25 @@ const MyCarsList = ({ myCarsPromise }) => {
             <div className="m-4 lg:m-20 flex lg:flex-row flex-col justify-between items-center">
               <div className="w-full overflow-x-auto rounded-2xl shadow-lg">
                 <table className="winky-rough-regular min-w-[800px] w-full border-collapse">
-                  <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] text-white">
-                    <tr className="text-xl lg:text-3xl">
-                      <th className="py-4 px-6 text-left">Car Image</th>
-                      <th className="py-4 px-6 text-left">Car Model</th>
-                      <th className="py-4 px-6 text-left">Daily Price</th>
-                      <th className="py-4 px-6 text-left">Bookings</th>
-                      <th className="py-4 px-6 text-left">Availability</th>
-                      <th className="py-4 px-6 text-left">Added On</th>
+                  <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] text-[#2D336B]">
+                    <tr className="text-xl lg:text-3xl whitespace-nowrap">
+                      <th className="py-4 px-6 text-center">Car Image</th>
+                      <th className="py-4 px-6 text-center">Car Model</th>
+                      <th className="py-4 px-6 text-center">Daily Price</th>
+                      <th className="py-4 px-6 text-center">Bookings</th>
+                      <th className="py-4 px-6 text-center">Availability</th>
+                      <th className="py-4 px-6 text-center">Added On</th>
                       <th className="py-4 px-6 text-center">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white text-gray-800">
                     {cars?.map((car) => (
-                      <tr key={car._id} className="border-t hover:bg-gray-50 transition duration-200">
+                      <tr key={car._id} className="border-t hover:bg-gray-200 transition duration-200 text-center">
                         <td className="py-3 px-6">
                           <img
                             src={car.car_image}
                             alt="car"
-                            className="w-16 h-16 lg:w-20 lg:h-20 object-cover rounded-xl shadow-md"
+                            className="w-10 h-10 lg:w-15 lg:h-15 object-cover rounded-xl shadow-md"
                           />
                         </td>
                         <td className="py-3 px-6 font-medium text-2xl">{car.car_model}</td>
@@ -224,15 +224,15 @@ const MyCarsList = ({ myCarsPromise }) => {
                                 setCarId(car);
                                 document.getElementById("updateNow").showModal();
                               }}
-                              className="flex items-center gap-1 bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition text-base cursor-pointer"
+                              className="flex items-center gap-1 bg-blue-500 text-white text-2xl px-3 py-1.5 rounded-lg hover:bg-blue-600 transition  cursor-pointer"
                             >
-                              <AiFillEdit className="text-lg" /> Update
+                              <AiFillEdit className="text-2xl" /> Update
                             </button>
                             <button
                               onClick={() => handleDeleteCar(car._id)}
-                              className="flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition text-base cursor-pointer"
+                              className="flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition text-2xl cursor-pointer"
                             >
-                              <RiDeleteBin5Line className="text-lg" /> Delete
+                              <RiDeleteBin5Line className="text-2xl" /> Delete
                             </button>
                           </div>
                         </td>
@@ -248,8 +248,120 @@ const MyCarsList = ({ myCarsPromise }) => {
               <div className="modal-box bg-[#7886C7]">
                 <form onSubmit={handleUpdateForm} className="space-y-5 p-5 text-left">
                   <h3 className="text-4xl text-[#FFF2AF] text-center">Update Car Info</h3>
-
-                  <input name="car_model" type="text" defaultValue={carId?.car_model} className="input w-full" placeholder="Car Model" />
+                  <div className="mt-15 grid grid-cols-1 gap-10">
+                    {/* car model */}
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Car Model
+                      </label>
+                      <input
+                        type="text"
+                        name="car_model"
+                        className="input w-full text-xl"
+                        defaultValue={carId?.car_model}
+                      />
+                    </fieldset>
+                    {/* car price */}
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Daily Rental Price
+                      </label>
+                      <input
+                        type="number"
+                        name="rental_price"
+                        className="input w-full text-xl"
+                        defaultValue={carId?.rental_price}
+                      />
+                    </fieldset>
+                    {/* availability */}
+                    <fieldset className="raleway-font fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Availability
+                      </label>
+                      <select
+                        name="availability"
+                        className="text-xl text-[#1B1A1A] font-bold"
+                        defaultValue={carId?.availability}
+                      >
+                        <option value="Available">Available</option>
+                        <option value="Unavailable">Unavailable</option>
+                      </select>
+                    </fieldset>
+                    {/* Vehicle Registration Number */}
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Vehicle Registration No
+                      </label>
+                      <input
+                        type="tel"
+                        name="reg_no"
+                        className="input w-full text-xl"
+                        defaultValue={carId?.reg_no}
+                      />
+                    </fieldset>
+                    {/* Features */}
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Car Features
+                      </label>
+                      <input
+                        type="text"
+                        name="car_features"
+                        className="input w-full text-xl"
+                       defaultValue={carId?.car_features}
+                      />
+                    </fieldset>
+                    {/* Description */}
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Car Description
+                      </label>
+                      <input
+                        type="text"
+                        name="car_description"
+                        className="input w-full text-xl"
+                        defaultValue={carId?.car_description}
+                      />
+                    </fieldset>
+                    {/* Booking count */}
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Booking Count
+                      </label>
+                      <input
+                        type="text"
+                        name="car_booking_count"
+                        className="input w-full text-xl"
+                        disabled={true}
+                        defaultValue={carId?.car_booking_count}
+                      />
+                    </fieldset>
+                    {/* Image */}
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Car Image
+                      </label>
+                      <input
+                        type="url"
+                        name="car_image"
+                        className="input w-full text-xl"
+                        defaultValue={carId?.car_image}
+                      />
+                    </fieldset>
+                    {/* Location */}
+                    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+                      <label className="label text-xl text-[#1B1A1A] font-bold">
+                        Location
+                      </label>
+                      <input
+                        type="text"
+                        name="car_location"
+                        className="input w-full text-xl"
+                        defaultValue={carId?.car_location}
+                      />
+                    </fieldset>
+                  </div>
+                  {/* <input name="car_model" type="text" defaultValue={carId?.car_model} className="input w-full" placeholder="Car Model" />
                   <input name="rental_price" type="number" defaultValue={carId?.rental_price} className="input w-full" placeholder="Daily Rental Price" />
                   <select name="availability" defaultValue={carId?.availability} className="input w-full">
                     <option value="Available">Available</option>
@@ -259,11 +371,11 @@ const MyCarsList = ({ myCarsPromise }) => {
                   <input name="car_features" type="text" defaultValue={carId?.car_features?.join(", ")} className="input w-full" placeholder="Car Features (comma-separated)" />
                   <input name="car_description" type="text" defaultValue={carId?.car_description?.join(", ")} className="input w-full" placeholder="Car Description (comma-separated)" />
                   <input name="car_image" type="url" defaultValue={carId?.car_image} className="input w-full" placeholder="Image URL" />
-                  <input name="car_location" type="text" defaultValue={carId?.car_location} className="input w-full" placeholder="Location" />
+                  <input name="car_location" type="text" defaultValue={carId?.car_location} className="input w-full" placeholder="Location" /> */}
 
                   <div className="modal-action flex justify-between">
-                    <button type="submit" className="btn bg-yellow-400">Update</button>
-                    <button type="button" onClick={() => document.getElementById("updateNow").close()} className="btn bg-gray-300">Cancel</button>
+                    <button type="submit" className="cursor-pointer w-1/2 mt-10 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-4 text-2xl font-bold text-black shadow-md hover:shadow-xl transition duration-300">Update</button>
+                    <button type="button" onClick={() => document.getElementById("updateNow").close()} className="cursor-pointer w-1/2 mt-10 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-4 text-2xl font-bold text-black shadow-md hover:shadow-xl transition duration-300">Cancel</button>
                   </div>
                 </form>
               </div>

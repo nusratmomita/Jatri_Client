@@ -11,9 +11,9 @@ const WhyChooseUs = () => {
                 [ Why Choose Us? ]
             </h1>
 
-            <div className="mt-20 flex flex-wrap justify-center gap-10 lg:gap-6">
+            <div className="mt-0 flex flex-wrap justify-center gap-10 lg:gap-6">
                  {/* Card 1 */}
-                <div className="w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-tr from-[#FFF2F2] via-[#A9B5DF] to-[#7886C7] shadow-xl hover:scale-105 transition-transform duration-600">
+                <div className="w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-r from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:scale-105 transition-transform duration-600">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <img src={Cars} alt="cars" className="bg-[#7886C7] p-2 rounded-2xl w-12 h-12" />
                         <h2 className="text-2xl font-semibold">Wide Variety of Cars</h2>
@@ -24,7 +24,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div className="lg:mt-20 w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-tr from-[#7886C7] via-[#A9B5DF] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
+                <div className="lg:mt-20 w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-l from-[#FFF2F2] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <img src={Price} alt="price" className="bg-[#7886C7] p-2 rounded-2xl w-12 h-12" />
                         <h2 className="text-2xl font-semibold">Affordable Prices</h2>
@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Card 3 */}
-                <div className="w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-tr from-[#FFF2F2] via-[#A9B5DF] to-[#7886C7] shadow-md hover:scale-105 transition-transform duration-600">
+                <div className="w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-r from-[#FFF2F2] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <img src={Bookings} alt="bookings" className="bg-[#7886C7] p-2 rounded-2xl w-12 h-12" />
                         <h2 className="text-2xl font-semibold">Easy Booking</h2>
@@ -46,7 +46,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Card 4 */}
-                <div className="lg:mt-20 w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-tr from-[#7886C7] via-[#A9B5DF] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
+                <div className="lg:mt-20 w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-l from-[#FFF2F2] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <img src={Support} alt="support" className="bg-[#7886C7] p-2 rounded-2xl w-12 h-12" />
                         <h2 className="text-2xl font-semibold">24/7 Support</h2>

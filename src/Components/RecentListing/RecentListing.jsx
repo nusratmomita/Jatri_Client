@@ -1,9 +1,10 @@
 import React, { Suspense } from 'react';
 // import RecentList from './RecentList';
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { Link } from 'react-router';
 
 const RecentListing = ({carData}) => {
-    // console.log(carData)
+    console.log(carData)
 
     const postedDate = (carDate) => {
         const currentDate = new Date();
@@ -31,11 +32,11 @@ const RecentListing = ({carData}) => {
             </span>
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-20 px-4 lg:px-30 ml-10 lg:ml-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ml-15 lg:m-10">
             {carData.map((car) => (
               <div
                 key={car._id}
-                className="relative card w-96 bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:shadow-2xl rounded-[2rem] transform hover:scale-[1.03] transition duration-300"
+                className="relative card w-85 bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:shadow-2xl rounded-[2rem] transform hover:scale-[1.03] transition duration-300"
               >
                 <figure className="px-6 pt-6">
                   <img
@@ -63,6 +64,11 @@ const RecentListing = ({carData}) => {
                   <p className="italic text-[#2D336B] text-2xl">
                     Posted: <span className="font-semibold">{postedDate(car.date)}</span>
                   </p>
+                  <Link to={`/carDetails/${car._id}`} className="w-full flex justify-center items-center gap-4 cursor-pointer py-2 
+                      rounded-xl bg-gradient-to-r from-[#5b51a2] to-[#7886C7] text-white text-lg 
+                      font-semibold hover:brightness-110 transition duration-300">          
+                      See More
+                  </Link>
                 </div>
               </div>
             ))}

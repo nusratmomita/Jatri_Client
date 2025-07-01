@@ -6,7 +6,7 @@ import bannerCars from '../../assets/bannerCars.jpg'; // Assuming you have a loc
 
 const Banner = () => {
     return (
-        <div className="m-20 rounded-3xl relative h-screen text-white overflow-hidden">
+        <div className="mt-50 mx-5 rounded-3xl relative h-screen text-white overflow-hidden">
             <div className="absolute inset-0">
                 <img 
                     src={bannerCars}
@@ -15,7 +15,7 @@ const Banner = () => {
                 />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
             </div>
-            <div className="relative z-10 flex flex-col justify-center items-center h-full text-center">
+            <div className="relative  flex flex-col justify-center items-center h-full text-center">
                 <motion.h1
                     initial={{ opacity: 7, y: -200 }}
                     animate={{ opacity: 4, y: 0 }}

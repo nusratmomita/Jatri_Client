@@ -67,7 +67,7 @@ const AddCars = () => {
   };
 
   return (
-    <div className="winky-rough-regular p-24">
+    <div className="mt-30 winky-rough-regular p-24">
       <div className="bg-[#7886C7] rounded-3xl p-12 text-center space-y-5">
         <h1 className="text-6xl text-[#FFF2AF]">Add a car</h1>
 

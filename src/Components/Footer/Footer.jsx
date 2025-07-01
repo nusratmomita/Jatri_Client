@@ -7,7 +7,7 @@ import { RiMessage3Fill } from "react-icons/ri";
 
 const Footer = () => {
     return (
-       <footer className="mt-80 flex lg:flex-row flex-col justify-between rounded-[40px] footer sm:footer-horizontal bg-gradient-to-l to-[#FFF2F2] from-[#A9B5DF] text-base-content p-10 mx-4 overflow-x-hidden">
+       <footer className="mt-80 flex lg:flex-row flex-col justify-between footer sm:footer-horizontal bg-gradient-to-l to-[#FFF2F2] from-[#A9B5DF] text-base-content p-10 mx-4 overflow-x-hidden">
             <aside className='flex justify-center items-center'>
                 <img className="w-40 h-40" src={siteLogo} alt="siteLogo" />
                 <h1 className="-ml-5 text-5xl font-extrabold text-[#2D336B]">Jatri</h1>

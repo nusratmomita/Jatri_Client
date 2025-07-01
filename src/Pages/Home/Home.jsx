@@ -5,6 +5,7 @@ import RecentListing from '../../Components/RecentListing/RecentListing';
 import SuccessWall from '../../Components/SuccessWall/SuccessWall';
 import SpecialOffers from '../../Components/SpecialOffers/SpecialOffers';
 import { useLoaderData } from 'react-router';
+import Testimonials from '../../Components/Testimonials/Testimonials';
 
 const Home = () => {
     const carData = useLoaderData();
@@ -15,6 +16,7 @@ const Home = () => {
             <WhyChooseUs></WhyChooseUs>
             <RecentListing carData={carData}></RecentListing>
             <SuccessWall></SuccessWall>
+            <Testimonials></Testimonials>
             <SpecialOffers></SpecialOffers>
         </div>
     );

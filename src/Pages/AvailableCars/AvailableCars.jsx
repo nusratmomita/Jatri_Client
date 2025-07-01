@@ -56,7 +56,7 @@ const AvailableCars = () => {
     }
 
     return (
-        <div className='winky-rough-regular'>
+        <div className='mt-30 winky-rough-regular'>
             <div className='flex flex-col lg:flex-row  justify-between items-center'>
                 <h1 className='ml-30 text-5xl font-bold mt-20 text-violet-900'>
                     Total Available Car(s): {cars.length}
@@ -126,7 +126,7 @@ const AvailableCars = () => {
                     🚗 Alas! No Car named or located with "{searchText}"
                     </h1>
                 </div>
-                        :
+                :
                 toggleStyle ? 
                 <div className='m-10 lg:m-30 grid justify-center items-center gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {cars.map((car) => (
@@ -177,7 +177,7 @@ const AvailableCars = () => {
                     </div>
                 ))}
                 </div>
-            :
+                :
                 <div className='m-10 lg:m-30 grid justify-center items-center gap-10 grid-rows-1 md:grid-rows-2 lg:grid-rows-3'>
                    
                     {cars.map((car) => (

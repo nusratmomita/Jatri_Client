@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router'; // corrected from 'react-router' to 'react-router-dom'
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
-import bannerCars from '../../assets/bannerCars.jpg'; // Assuming you have a local image, otherwise use the URL directly
+import bannerCars from '../../assets/bannerCars2.jpg'; // Assuming you have a local image, otherwise use the URL directly
 
 const Banner = () => {
     return (
-        <div className="mt-50 mx-5 rounded-3xl relative h-screen text-white overflow-hidden">
+        <div className="mt-50 mx-20 rounded-3xl relative h-[500px] text-white overflow-hidden">
             <div className="absolute inset-0">
                 <img 
                     src={bannerCars}
@@ -15,9 +15,9 @@ const Banner = () => {
                 />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
             </div>
-            <div className="relative  flex flex-col justify-center items-center h-full text-center">
+            <div className="relative flex flex-col justify-center items-center h-full text-center">
                 <motion.h1
-                    initial={{ opacity: 7, y: -200 }}
+                    initial={{ opacity: 0, y: -200 }}
                     animate={{ opacity: 4, y: 0 }}
                     transition={{ duration: 1.2 }}
                     className="text-6xl md:text-7xl text-white font-extrabold leading-tight mb-6 animate-pulse"

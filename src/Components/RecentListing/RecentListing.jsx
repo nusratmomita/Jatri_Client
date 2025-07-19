@@ -25,7 +25,7 @@ const RecentListing = ({carData}) => {
 
     }
     return (
-        <div className="mt-40 my-24 px-4 text-center">
+        <div data-aos="fade-right" className="mt-40 my-24 px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
             <span className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
               [ Recent Listing ]

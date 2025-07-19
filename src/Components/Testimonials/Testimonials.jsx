@@ -42,8 +42,8 @@ const testimonials = [
 
 const Testimonials = () => {
     return (
-        <div className="my-35 px-6 lg:px-10">
-            <h2 className="text-5xl text-center md:text-6xl font-bold text-[#2D336B] mb-12">[ What Our Riders Say ]</h2>
+        <div  data-aos="fade-right" className="my-35 px-6 lg:px-10">
+            <h2 className="text-5xl text-center md:text-6xl font-bold text-[#2D336B] mb-12">[ What Our Customers Say ]</h2>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={30}

@@ -32,7 +32,7 @@ const Banner = () => {
                 >
                     <Link 
                         to='/availableCars' 
-                        className="bg-white text-gray-900 hover:bg-[#B2A5FF] py-3 px-8 rounded-full text-xl font-bold transition duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl"
+                        className="bg-gradient-to-r from-[#5b51a2] to-[#7886C7] text-white py-3 px-8 rounded-full text-xl font-bold transition duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl"
                     >
                         View Available Cars
                     </Link>

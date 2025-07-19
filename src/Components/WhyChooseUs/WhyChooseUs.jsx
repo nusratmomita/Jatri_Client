@@ -7,13 +7,13 @@ import Support from '../../assets/customerSupport.png';
 const WhyChooseUs = () => {
     return (
         <div className="mt-40 my-24 px-5 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-[#493D9E] mb-12">
+            <h1 className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
                 [ Why Choose Us? ]
             </h1>
 
             <div className="mt-0 flex flex-wrap justify-center gap-10 lg:gap-6">
-                 {/* Card 1 */}
-                <div className="w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-r from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:scale-105 transition-transform duration-600">
+                {/* Card 1 */}
+                <div className="text-[#2D336B] w-full md:w-80 h-[300px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-r from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:scale-105 transition-transform duration-600">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <img src={Cars} alt="cars" className="bg-[#7886C7] p-2 rounded-2xl w-12 h-12" />
                         <h2 className="text-2xl font-semibold">Wide Variety of Cars</h2>
@@ -24,7 +24,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div className="lg:mt-20 w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-l from-[#FFF2F2] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
+                <div className="lg:mt-20 w-full md:w-80 h-[300px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-l from-[#FFF2F2] to-[#DAD2FF] text-[#2D336B] shadow-md hover:scale-105 transition-transform duration-600">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <img src={Price} alt="price" className="bg-[#7886C7] p-2 rounded-2xl w-12 h-12" />
                         <h2 className="text-2xl font-semibold">Affordable Prices</h2>
@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Card 3 */}
-                <div className="w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-r from-[#FFF2F2] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
+                <div className="text-[#2D336B] w-full md:w-80 h-[300px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-r from-[#FFF2F2] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <img src={Bookings} alt="bookings" className="bg-[#7886C7] p-2 rounded-2xl w-12 h-12" />
                         <h2 className="text-2xl font-semibold">Easy Booking</h2>
@@ -46,7 +46,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Card 4 */}
-                <div className="lg:mt-20 w-full md:w-80 h-[350px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-l from-[#FFF2F2] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
+                <div className="text-[#2D336B] lg:mt-20 w-full md:w-80 h-[300px] p-6 rounded-br-3xl rounded-tl-3xl bg-gradient-to-l from-[#FFF2F2] to-[#DAD2FF] shadow-md hover:scale-105 transition-transform duration-600">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <img src={Support} alt="support" className="bg-[#7886C7] p-2 rounded-2xl w-12 h-12" />
                         <h2 className="text-2xl font-semibold">24/7 Support</h2>

@@ -81,7 +81,7 @@ const Login = () => {
                                 <div className="divider"></div>
                                 <p className="px-6 text-xl text-center dark:text-gray-600">
                                 Don't have an account?
-                                <NavLink className="underline text-gray-800"to="/register"> Register here</NavLink>
+                                <NavLink className="underline text-purple-700"to="/register"> Register here</NavLink>
                                 </p>
                             </div>
                     </form>

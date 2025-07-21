@@ -74,10 +74,10 @@ const AvailableCars = () => {
                     }
                 </div>
             </div>
-            <div className='flex '>
+            <div className='lg:flex '>
                 <div>
-                    <div className='m-10 flex flex-col '>
-                        <label className="input mt-20 w-[150%]">
+                    <div className='m-10 lg:flex lg:flex-col'>
+                        <label className="input mt-20 lg:w-[150%]">
                             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g
                                 strokeLinejoin="round"
@@ -114,7 +114,7 @@ const AvailableCars = () => {
                                 
                                 placeholder="Search..." />
                         </label>
-                        <select onChange={(e) => setSortBy(e.target.value)} defaultValue="Sort by.." className="mt-20 text-xl font-bold select w-[150%]">
+                        <select onChange={(e) => setSortBy(e.target.value)} defaultValue="Sort by.." className="mt-20 text-xl font-bold select lg:w-[150%]">
                             <option disabled value="">Sort by..</option>
                             <option value="Oldest">Sort by Date:(Oldest)</option>
                             <option value="Newest">Sort by Date:(Newest)</option>
@@ -126,7 +126,7 @@ const AvailableCars = () => {
                 <div>
                     {
                     cars.length === 0 ?
-                    <div className="mt-40 flex flex-col items-center justify-between text-center bg-gradient-to-br from-[#f4f4f8] to-[#eae6ff] rounded-3xl p-10 shadow-lg max-w-xl mx-auto">
+                    <div className="mt-30 lg:ml-40 mb-20 text-center bg-gradient-to-br from-[#f4f4f8] to-[#eae6ff] rounded-3xl p-10 shadow-lg max-w-xl mx-auto">
                         <h1 className="text-3xl lg:text-4xl font-bold text-[#2D336B] mb-4">
                         🚗 Alas! No Car named or located with "{searchText}"
                         </h1>
@@ -187,7 +187,7 @@ const AvailableCars = () => {
                         {cars.map((car) => (
                             <div
                                 key={car._id}
-                                className="-mt-3 relative w-[460px] lg:w-[995px] card bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                                className="mt-10 lg:-mt-3 relative w-[460px] lg:w-[955px] card bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                             >
                                 <div className="absolute top-4 right-4 bg-white/80 px-4 py-1 rounded-full text-xl text-gray-700 font-semibold shadow-md">
                                     📍 {car.car_location}

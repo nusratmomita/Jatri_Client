@@ -178,7 +178,7 @@ const MyBookingList = ({myBookingsPromise}) => {
                                         .showModal()
                                 }
                                 }
-                                className="cursor-pointer w-[170px] flex gap-2  justify-center items-center bg-blue-500 text-white font-medium p-2 rounded-md"
+                                className="cursor-pointer w-[170px] flex gap-2  justify-center items-center bg-[#493D9E] text-white font-medium p-2 rounded-md"
                               >
                                 <SlCalender />
                                 Modify Date
@@ -218,8 +218,8 @@ const MyBookingList = ({myBookingsPromise}) => {
                                   handleCancelCar(e,car._id)
                                 } }
                                 className="cursor-pointer flex gap-2 justify-center items-center 
-                                            bg-red-500
-                                            text-white font-semibold py-1.5 px-4 rounded-md transition duration-300 shadow-md hover:shadow-xl"
+                                            bg-[#DAD2FF]
+                                            text-black font-semibold py-1.5 px-4 rounded-md transition duration-300 shadow-md hover:shadow-xl"
                               >
                                 <RiDeleteBin5Line></RiDeleteBin5Line>Cancel
                               </button>

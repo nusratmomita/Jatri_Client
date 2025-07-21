@@ -125,13 +125,13 @@ const MyBookingList = ({myBookingsPromise}) => {
     return (
         <div className='winky-rough-regular whitespace-nowrap'>
             <h1 className="mt-25 mb-20 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
-              All the cars booked by YOU are shown here...
+              All the cars booked by you are shown here...
             </h1>
             {
               <div className="-mt-30 overflow-x-auto">
                 <div className="flex justify-center items-center min-h-screen p-16">
                   <div className="overflow-x-auto w-full max-w-8xl rounded-2xl border border-gray-300 shadow-lg bg-white">
-                    <table className="min-w-full table-auto text-2xl font-bold rounded-2xl overflow-hidden">
+                    <table  className="min-w-full table-auto text-2xl font-bold rounded-2xl overflow-hidden">
                       <thead className="bg-gradient-to-l from-[#B2A5FF] to-[#A9B5DF] w-full rounded-t-2xl text-gray-900 font-bold">
                         <tr className="text-center">
                           <th className="py-3 px-4 ">Car Image</th>
@@ -147,6 +147,7 @@ const MyBookingList = ({myBookingsPromise}) => {
                       <tbody className='text-gray-600'>
                         {bookings.map((car) => (
                           <tr
+                            data-aos="fade-right"
                             key={car._id}
                             className="border-t hover:bg-gray-100 text-center"
                           >

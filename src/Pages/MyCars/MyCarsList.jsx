@@ -194,7 +194,7 @@ const MyCarsList = ({ myCarsPromise }) => {
                   </thead>
                   <tbody className="bg-white text-gray-800">
                     {cars?.map((car) => (
-                      <tr key={car._id} className="border-t hover:bg-gray-200 transition duration-200 text-center">
+                      <tr data-aos="fade-left" key={car._id} className="border-t hover:bg-gray-200 transition duration-200 text-center">
                         <td className="py-3 px-6">
                           <img
                             src={car.car_image}

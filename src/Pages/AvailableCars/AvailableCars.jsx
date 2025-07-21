@@ -58,7 +58,7 @@ const AvailableCars = () => {
     return (
         <div className='mt-30 winky-rough-regular'>
             <div className='flex justify-between items-center'>
-                <h1 className='ml-30 text-5xl font-bold mt-20 text-violet-900'>
+                <h1 className='ml-10 text-5xl font-bold mt-20 text-violet-900'>
                     Total Available Car(s): {cars.length}
                 </h1>
                 <div className='w-[180px] mr-10'>
@@ -134,60 +134,60 @@ const AvailableCars = () => {
                     :
                     toggleStyle ? 
                     <div className='m-10 lg:m-30 grid justify-center items-center gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                    {cars.map((car) => (
-                        <div
-                            key={car._id}
-                            className="relative card h-[570px] bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                        >
-                            <div className="absolute top-4 right-4 bg-white/80 px-4 py-1 rounded-full text-xl text-gray-700 font-semibold shadow-md">
-                                📍 {car.car_location}
-                            </div>
-
-                            <figure className="px-6 pt-6">
-                                <img
-                                    src={car.car_image}
-                                    alt={car.car_model}
-                                    className="rounded-2xl w-full h-38 object-cover shadow-md"
-                                />
-                            </figure>
-
-                            <div className="card-body text-left px-6 pb-6">
-                                <h2 className="card-title text-3xl font-bold text-violet-900 mb-2">
-                                    {car.car_model}
-                                </h2>
-
-                                <ul className="list-disc list-inside space-y-1 text-lg text-gray-800 mb-4">
-                                    {car.car_description.map((description, index) => (
-                                        <li key={index}>{description}</li>
-                                    ))}
-                                </ul>
-                                <div>
-                                    <h1 className='flex items-center gap-2 text-lg'>Daily Rent: <span className='flex justify-center items-center gap-1 text-2xl'><FaSackDollar size={20} color='purple'></FaSackDollar>{car.rental_price} /day</span></h1>
-                                    <h1 className='text-lg'>Added On: <span className='text-2xl'>{addedCarDate(car.date)}</span></h1>
-                                </div>
-                                <h2 className="flex gap-1 justify-center items-center rounded-3xl border-purple-300 bg-purple-200 w-1/3 text-center p-3 text-lg font-medium  text-violet-900 mb-2">
-                                    <IoMdCheckmarkCircleOutline size={30}></IoMdCheckmarkCircleOutline>{car.status}
-                                </h2>
-                                
-                                <div className="card-actions mt-auto">
-                                    <Link to={`/carDetails/${car._id}`} className="w-full flex justify-center items-center gap-4 cursor-pointer py-2 
-                                        rounded-xl bg-gradient-to-r from-[#493D9E] to-[#7886C7] text-white text-lg 
-                                        font-semibold hover:brightness-110 transition duration-300">          
-                                    <img className="w-12 h-12" src={Car} alt="car" />
-                                        Book Now
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                    </div>
-                    :
-                    <div className='m-10 lg:m-30 grid justify-center items-center gap-10 grid-rows-1 md:grid-rows-2 lg:grid-rows-3'>
-                    
                         {cars.map((car) => (
                             <div
                                 key={car._id}
-                                className="relative w-[460px] lg:w-[1205px] card bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                                className="relative card h-[570px] bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                            >
+                                <div className="absolute top-4 right-4 bg-white/80 px-4 py-1 rounded-full text-xl text-gray-700 font-semibold shadow-md">
+                                    📍 {car.car_location}
+                                </div>
+
+                                <figure className="px-6 pt-6">
+                                    <img
+                                        src={car.car_image}
+                                        alt={car.car_model}
+                                        className="rounded-2xl w-full h-38 object-cover shadow-md"
+                                    />
+                                </figure>
+
+                                <div className="card-body text-left px-6 pb-6">
+                                    <h2 className="card-title text-3xl font-bold text-violet-900 mb-2">
+                                        {car.car_model}
+                                    </h2>
+
+                                    <ul className="list-disc list-inside space-y-1 text-lg text-gray-800 mb-4">
+                                        {car.car_description.map((description, index) => (
+                                            <li key={index}>{description}</li>
+                                        ))}
+                                    </ul>
+                                    <div>
+                                        <h1 className='flex items-center gap-2 text-lg'>Daily Rent: <span className='flex justify-center items-center gap-1 text-2xl'><FaSackDollar size={20} color='purple'></FaSackDollar>{car.rental_price} /day</span></h1>
+                                        <h1 className='text-lg'>Added On: <span className='text-2xl'>{addedCarDate(car.date)}</span></h1>
+                                    </div>
+                                    <h2 className="flex gap-1 justify-center items-center rounded-3xl border-purple-300 bg-purple-200 w-1/3 text-center p-3 text-lg font-medium  text-violet-900 mb-2">
+                                        <IoMdCheckmarkCircleOutline size={30}></IoMdCheckmarkCircleOutline>{car.status}
+                                    </h2>
+                                    
+                                    <div className="card-actions mt-auto">
+                                        <Link to={`/carDetails/${car._id}`} className="w-full flex justify-center items-center gap-4 cursor-pointer py-2 
+                                            rounded-xl bg-gradient-to-r from-[#493D9E] to-[#7886C7] text-white text-lg 
+                                            font-semibold hover:brightness-110 transition duration-300">          
+                                        <img className="w-12 h-12" src={Car} alt="car" />
+                                            Book Now
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    :
+                    <div className='lg:m-30 grid justify-center items-center gap-10 grid-rows-1 md:grid-rows-2 lg:grid-rows-3'>
+                        {/* <h1>hi</h1> */}
+                        {cars.map((car) => (
+                            <div
+                                key={car._id}
+                                className="-mt-3 relative w-[460px] lg:w-[995px] card bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                             >
                                 <div className="absolute top-4 right-4 bg-white/80 px-4 py-1 rounded-full text-xl text-gray-700 font-semibold shadow-md">
                                     📍 {car.car_location}

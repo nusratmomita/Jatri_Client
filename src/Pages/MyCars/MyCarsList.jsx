@@ -224,13 +224,13 @@ const MyCarsList = ({ myCarsPromise }) => {
                                 setCarId(car);
                                 document.getElementById("updateNow").showModal();
                               }}
-                              className="flex items-center gap-1 bg-blue-500 text-white text-2xl px-3 py-1.5 rounded-lg hover:bg-blue-600 transition  cursor-pointer"
+                              className="flex items-center gap-1 bg-[#A9B5DF] text-gray-800 font-bold text-2xl px-3 py-1.5 rounded-lg hover:bg-[#a6ace0] transition  cursor-pointer"
                             >
                               <AiFillEdit className="text-2xl" /> Update
                             </button>
                             <button
                               onClick={() => handleDeleteCar(car._id)}
-                              className="flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition text-2xl cursor-pointer"
+                              className="flex items-center gap-1 bg-[#DAD2FF] text-gray-800 font-bold px-3 py-1.5 rounded-lg hover:bg-[#A9B5DF] transition text-2xl cursor-pointer"
                             >
                               <RiDeleteBin5Line className="text-2xl" /> Delete
                             </button>
@@ -361,18 +361,6 @@ const MyCarsList = ({ myCarsPromise }) => {
                       />
                     </fieldset>
                   </div>
-                  {/* <input name="car_model" type="text" defaultValue={carId?.car_model} className="input w-full" placeholder="Car Model" />
-                  <input name="rental_price" type="number" defaultValue={carId?.rental_price} className="input w-full" placeholder="Daily Rental Price" />
-                  <select name="availability" defaultValue={carId?.availability} className="input w-full">
-                    <option value="Available">Available</option>
-                    <option value="Unavailable">Unavailable</option>
-                  </select>
-                  <input name="reg_no" type="text" defaultValue={carId?.reg_no} className="input w-full" placeholder="Vehicle Registration No" />
-                  <input name="car_features" type="text" defaultValue={carId?.car_features?.join(", ")} className="input w-full" placeholder="Car Features (comma-separated)" />
-                  <input name="car_description" type="text" defaultValue={carId?.car_description?.join(", ")} className="input w-full" placeholder="Car Description (comma-separated)" />
-                  <input name="car_image" type="url" defaultValue={carId?.car_image} className="input w-full" placeholder="Image URL" />
-                  <input name="car_location" type="text" defaultValue={carId?.car_location} className="input w-full" placeholder="Location" /> */}
-
                   <div className="modal-action flex justify-between">
                     <button type="submit" className="cursor-pointer w-1/2 mt-10 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-4 text-2xl font-bold text-black shadow-md hover:shadow-xl transition duration-300">Update</button>
                     <button type="button" onClick={() => document.getElementById("updateNow").close()} className="cursor-pointer w-1/2 mt-10 bg-gradient-to-tr from-[#7886C7] via-purple-100 to-pink-100 rounded-3xl p-4 text-2xl font-bold text-black shadow-md hover:shadow-xl transition duration-300">Cancel</button>

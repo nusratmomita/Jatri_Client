@@ -172,7 +172,8 @@ const AddCars = () => {
               />
             </fieldset>
             {/* Location */}
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+          </div>
+            <fieldset className="mt-10 fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
               <label className="label text-xl text-[#1B1A1A] font-bold">
                 Location
               </label>
@@ -183,7 +184,6 @@ const AddCars = () => {
                 placeholder="Enter Location"
               />
             </fieldset>
-          </div>
           <button
             type="submit"
             className="mt-10 rounded-2xl btn lg:w-full text-black text-2xl bg-[#FFF2AF] border-2 border-white"

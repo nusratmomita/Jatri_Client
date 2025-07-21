@@ -120,8 +120,6 @@ const MyBookingList = ({myBookingsPromise}) => {
     });
     }
 
-
-
     return (
         <div className='winky-rough-regular whitespace-nowrap'>
             <h1 className="mt-25 mb-20 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">

@@ -137,7 +137,7 @@ const AvailableCars = () => {
                         {cars.map((car) => (
                             <div
                                 key={car._id}
-                                className="relative card h-[570px] bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                                className="relative card h-[590px] bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                             >
                                 <div className="absolute top-4 right-4 bg-white/80 px-4 py-1 rounded-full text-xl text-gray-700 font-semibold shadow-md">
                                     📍 {car.car_location}

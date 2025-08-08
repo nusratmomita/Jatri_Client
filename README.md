@@ -13,8 +13,8 @@
 </ul>
 
 <h2>💻Project Preview</h2>
-<img src="[https://ibb.co.com/27DpqqcX](https://i.ibb.co.com/xSprhhzV/jatri.png)" alt="jatriImage">
-<img src="[https://ibb.co.com/z3wpnXs](https://i.ibb.co.com/MzLr2cn/jatri1.png)" alt="jatriAddCar">
+<img src="https://i.ibb.co.com/xSprhhzV/jatri.png" alt="jatriImage">
+<img src="https://i.ibb.co.com/MzLr2cn/jatri1.png" alt="jatriAddCar">
 
 <h2>👾Technology Store</h2>
 <ul>

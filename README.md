@@ -1,6 +1,6 @@
 <h1>Welcome To Jatri🚗</h1>
 <h2>Want to go on a trip but worried about renting cars? We have got you! </h2>
-<p>Jatri is a car rental web service that provides users to book and list their preferred cars. Not just this, they can update and delete anytime they want.</p>
+<p>Jatri is a car rental web service that allows users to book and list their preferred cars. Not just this, they can update and delete anytime they want.</p>
 
 <h2>📝Core Features</h2>
 <ul>

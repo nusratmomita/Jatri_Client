@@ -33,7 +33,6 @@
 <h4>Step 3: Paste the command: <code>git clone https://github.com/nusratmomita/Jatri_Client.git</code>.</h4>
 <h4>Step 4: Download all the dependencies using <code>npm i</code></h4>
 <h4>Step 5: Email me to get the Firebase configurations.</h4>
-<h4>Step 5: Email me to get the Firebase configurations.</h4>
 
 <h2>😅Got no time? Just use the link below to visit the site</h2>
 <a href="https://jatri-9cc51.web.app/">[Live Link]</a>

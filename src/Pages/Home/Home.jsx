@@ -15,7 +15,7 @@ const Home = () => {
             <Banner></Banner>
             <WhyChooseUs></WhyChooseUs>
             <RecentListing carData={carData}></RecentListing>
-            <SuccessWall></SuccessWall>
+            {/* <SuccessWall></SuccessWall> */}
             <Testimonials></Testimonials>
             <SpecialOffers></SpecialOffers>
         </div>

@@ -95,7 +95,7 @@ const CarDetails = () => {
     }
 
     return (
-        <div className="winky-rough-regular mt-40 lg:m-55 flex flex-col lg:flex-row-reverse gap-10 items-center shadow-2xl bg-[#DAD2FF] rounded-2xl p-4 lg:p-6 hover:shadow-4xl transform hover:scale-105 transition-all duration-300">
+        <div className="winky-rough-regular mt-40 lg:m-55 flex flex-col lg:flex-row-reverse gap-10 items-center shadow-2xl bg-[#DAD2FF] rounded-2xl p-4 lg:p-6 hover:shadow-4xl">
             <img
                 src={singleCar.car_image}
                 alt={singleCar.car_model}
@@ -132,7 +132,7 @@ const CarDetails = () => {
                     <p className="text-xl font-bold text-[#2D336B]">💰 Rental Price: ${singleCar.rental_price} /day</p>
                 </div>
               
-                <button onClick={()=>document.getElementById('bookNow').showModal()} className="w-3/5 cursor-pointer mt-6 px-6 py-3 bg-[#7466d8] hover:bg-[#2D336B] text-white font-semibold rounded-xl shadow-lg transition duration-300 ease-in-out">
+                <button onClick={()=>document.getElementById('bookNow').showModal()} className="w-full cursor-pointer mt-6 px-6 py-3 bg-[#7466d8] hover:bg-[#2D336B] text-white font-semibold rounded-xl shadow-lg transition duration-300 ease-in-out">
                     Book Now
                 </button>
 

@@ -202,7 +202,7 @@ const MyCarsList = ({ myCarsPromise }) => {
                             className="w-10 h-10 lg:w-15 lg:h-15 object-cover rounded-xl shadow-md"
                           />
                         </td>
-                        <td className="py-3 px-6 font-medium text-2xl">{car.car_model}</td>
+                        <td className="py-3 px-6 font-medium text-2xl whitespace-nowrap">{car.car_model}</td>
                         <td className="py-3 px-6 text-2xl">${car.rental_price}</td>
                         <td className="py-3 px-6 text-2xl">{car.car_booking_count}</td>
                         <td className="py-3 px-6">

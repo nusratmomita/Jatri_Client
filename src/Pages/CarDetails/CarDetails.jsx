@@ -85,7 +85,7 @@ const CarDetails = () => {
                 car_booking_count: (prev.car_booking_count || 0) + 1
             }));
 
-            toast.success(`You've booked "${singleCar.car_model}" successfully!`);
+            toast.success(`You've booked "${singleCar.car_model}" successfully! kindly go to My Bookings page to confirm it`);
             document.getElementById('bookNow').close();
             form.reset();
         })
@@ -95,17 +95,17 @@ const CarDetails = () => {
     }
 
     return (
-        <div className="winky-rough-regular mt-40 lg:m-55 flex flex-col lg:flex-row-reverse gap-10 items-center shadow-2xl bg-[#DAD2FF] rounded-2xl p-4 lg:p-6 hover:shadow-4xl">
+        <div className="winky-rough-regular mt-40 lg:m-55 flex flex-col lg:flex-col gap-10 items-center shadow-2xl bg-[#DAD2FF] rounded-2xl p-4 lg:p-6 hover:shadow-4xl">
             <img
                 src={singleCar.car_image}
                 alt={singleCar.car_model}
-                className="w-full max-w-lg rounded-xl object-cover"
+                className="w-full h-[390px] rounded-lg object-cover"
             />
             <div className="text-[#2D336B] space-y-4 w-full">
                 <h1 className="text-4xl lg:text-5xl font-extrabold text-[#493D9E]">🚗 {singleCar.car_model}</h1>
-                <p className="text-lg font-medium">📋 Registration No: <span className="font-semibold">{singleCar.reg_no}</span></p>
+                <p className="text-xl font-medium">📋 Registration No: <span className="font-semibold text-2xl">{singleCar.reg_no}</span></p>
 
-                <div className="bg-[#FFF2AF] rounded-xl p-4 shadow-md space-y-2">
+                <div className="mt-8">
                     <h1 className='text-2xl'>Description: </h1>
                     <div className='flex gap-2'>
                         {

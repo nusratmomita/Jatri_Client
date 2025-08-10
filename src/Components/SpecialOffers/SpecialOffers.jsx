@@ -16,7 +16,7 @@ const SpecialOffers = () => {
                         initial={{ x: -100, opacity: 0 }}
                         whileInView={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.7 }}
-                        className="ml-10 w-[390px] lg:ml-0 lg:w-full bg-white rounded-2xl shadow-lg p-8 hover:scale-105 hover:shadow-2xl transition-all duration-300"
+                        className="w-[200px] lg:ml-0 lg:w-full bg-white rounded-2xl shadow-lg p-8 hover:scale-105 hover:shadow-2xl transition-all duration-300"
                     >
                         <h3 className="text-2xl font-semibold text-[#493D9E] mb-3">🚗 Get 15% off for weekend rentals!</h3>
                         <p className="text-[#4B5563] mb-5">Book your weekend escape now and enjoy discounted rates on all rides.</p>

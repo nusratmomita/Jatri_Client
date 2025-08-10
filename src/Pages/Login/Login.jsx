@@ -45,8 +45,8 @@ const Login = () => {
     }
     return (
         <div className="winky-rough-regular hero">
-            <div className="hero-content w-full rounded-3xl mt-30 px-25 py-5 flex-col justify-evenly lg:flex-row">
-                <div className="bg-gradient-to-tl from-[#FFF2F2] to-[#DAD2FF] flex justify-center items-center p-2 rounded-2xl w-full shadow-2xl">
+            <div className="hero-content w-full rounded-3xl mt-30 px-25 py-5  flex-col justify-evenly lg:flex-col-reverse">
+                <div className="bg-gradient-to-tl from-[#FFF2F2] to-[#DAD2FF] flex flex-col lg:flex-row-reverse justify-center items-center p-2 rounded-2xl w-full shadow-2xl">
                     <img className="w-120 h-130" src={loginImage} alt="loginImage" />
                     <div className="p-6 flex flex-col rounded-2xl sm:p-10  text-gray-800">
                         <div className="mb-4 text-center">

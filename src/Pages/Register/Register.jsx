@@ -85,7 +85,7 @@ const Register = () => {
     return (
         <div className="winky-rough-regular hero">
             <div className="hero-content w-full rounded-3xl mt-30 px-25 py-5 flex-col justify-evenly lg:flex-row">
-                <div className="bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] flex flex-row-reverse justify-center items-center p-2 rounded-2xl w-full shadow-2xl">
+                <div className="bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] flex flex-col lg:flex-row justify-center items-center p-2 rounded-2xl w-full shadow-2xl">
                     <img className="w-120 h-130" src={registerImage} alt="loginImage" />
                     <div className="p-6 flex flex-col max-w-lg rounded-2xl sm:p-10  text-gray-800">
                         <div className="mb-4 text-center">
@@ -120,7 +120,7 @@ const Register = () => {
                                 <div>
                                     <button type="submit" className="cursor-pointer w-full px-8 py-3 text-3xl font-semibold rounded-md dark:bg-[#2D336B] dark:text-gray-50">Register</button>
                                 </div>
-                                <button type="button" onClick={handleGoogle} className="btn w-full bg-white text-black text-xl border-[#e5e5e5]">
+                                <button type="button" onClick={handleGoogle} className="btn w-full h-[60px] whitespace-nowrap bg-white text-black text-xl border-[#e5e5e5]">
                                     <svg aria-label="Google logo" width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
                                     Register with Google
                                 </button>

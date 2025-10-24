@@ -10,6 +10,9 @@ import MyCars from "../Pages/MyCars/MyCars";
 import MyBookings from "../Pages/MyBookings/MyBookings";
 import PrivateRoute from "./PrivateRoute";
 import CarDetails from "../Pages/CarDetails/CarDetails";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import UserProfile from "../Pages/UserProfile/UserProfile";
+import comparePrices from "../Pages/ComparePrices/comparePrices";
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +56,20 @@ export const router = createBrowserRouter([
                 path: "/register",
                 Component: Register
             },
+        ]
+    },
+    {
+        path: "/dashboard",
+        Component: Dashboard,
+        children:[
+            {
+                path: "/dashboard/userProfile",
+                Component: UserProfile
+            },
+            {
+                path: "/dashboard/comparePrices",
+                Component: comparePrices
+            }
         ]
     }
 ])

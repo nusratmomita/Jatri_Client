@@ -38,6 +38,7 @@ const Header = () => {
                                 <li className='navLinks lg:ml-10'><NavLink to="/addCar">Add Car</NavLink></li>
                                 <li className='navLinks lg:ml-10'><NavLink to="/myCars">My Cars</NavLink></li>
                                 <li className='navLinks lg:ml-10'><NavLink to="/myBookings">My Bookings</NavLink></li>
+                                <li className='navLinks lg:ml-10'><NavLink to="/dashboard">Dashboard</NavLink></li>
                             </> 
                             :
                             <>
@@ -62,6 +63,7 @@ const Header = () => {
                         <li className='navLinks lg:ml-10'><NavLink to="/addCar">Add Car</NavLink></li>
                         <li className='navLinks lg:ml-10'><NavLink to="/myCars">My Cars</NavLink></li>
                         <li className='navLinks lg:ml-10'><NavLink to="/myBookings">My Bookings</NavLink></li>
+                        <li className='navLinks lg:ml-10'><NavLink to="/dashboard">Dashboard</NavLink></li>
                     </> 
                     :
                     <>
@@ -73,13 +75,13 @@ const Header = () => {
                 }
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="ml-10 navbar-end">
                 <div className='flex gap-2 lg:gap-4 justify-center items-center'>
                     {
                         user && user?.email ?
                         <>
                             <img className="w-10 h-10 bg-white p-1 rounded-full" src={user?.photoURL} alt="userPhoto" />
-                            <h1 className='text-[#2D336B] text-2xl font-bold'>Hi,{user?.displayName}</h1>
+                            <h1 className='text-[#2D336B] text-2xl font-bold whitespace-nowrap'>Hi,{user?.displayName}</h1>
                             {/* <h1>{user?.email}</h1> */}
                         </>
                         :

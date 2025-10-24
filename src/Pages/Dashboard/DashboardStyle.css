@@ -3,4 +3,6 @@ a.active{
     font-size: 1.30rem;
     background-color: #2D336B;
     color: #F4EBD3;
+    padding-right: 3px;
+    padding-left: 3px;
 }

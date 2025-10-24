@@ -41,7 +41,7 @@ const CompareCars = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Header */}
       <div className="bg-white shadow-sm border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto px-6 py-10">
           <h1 className="text-4xl font-bold text-slate-900 tracking-tight">
             Vehicle Comparison Tool
           </h1>

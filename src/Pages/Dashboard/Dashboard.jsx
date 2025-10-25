@@ -37,24 +37,24 @@ const DashboardRoot = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 text-xl min-h-full w-80 p-4 flex flex-col justify-between"> 
+                <ul className="menu bg-base-200 text-xl min-h-full w-80 p-4 flex flex-col justify-between dashboardNavLinks"> 
                 {/* Sidebar content */}
                 <div className='mt-10 text-2xl'>
                     <li>
                         <NavLink to="/">
-                        <FaHome className="navLinks inline-block" />
+                        <FaHome className="dashboardNavLinks navLinks inline-block" />
                             Home
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/dashboard/userProfile">
-                        <FaUser className="inline-block " />
+                        <FaUser className="dashboardNavLinks inline-block " />
                             My Profile
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/dashboard/comparePrices">
-                        <FaChartLine className="inline-block " />
+                        <FaChartLine className="dashboardNavLinks inline-block " />
                             Compare Prices
                         </NavLink>
                     </li>

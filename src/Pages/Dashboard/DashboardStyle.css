@@ -1,4 +1,4 @@
-a.active{
+.dashboardNavLinks a.active{
     text-decoration: underline;
     font-size: 1.30rem;
     background-color: #2D336B;

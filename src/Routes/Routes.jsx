@@ -13,6 +13,7 @@ import CarDetails from "../Pages/CarDetails/CarDetails";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import comparePrices from "../Pages/ComparePrices/comparePrices";
+import DashboardRoot from "../Root/DashboardRoot";
 
 export const router = createBrowserRouter([
     {
@@ -60,8 +61,12 @@ export const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        Component: Dashboard,
-        children:[
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                index: true, // this matches "/dashboard"
+                element: <DashboardRoot/>
+            },
             {
                 path: "/dashboard/userProfile",
                 Component: UserProfile

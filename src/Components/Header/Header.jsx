@@ -21,7 +21,7 @@ const Header = () => {
     }
 
     return (
-        <div className="navbar bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] shadow-sm p-5 fixed z-50 top-0">
+        <div className="navbar bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] shadow-sm px-10 fixed z-50 top-0">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -29,7 +29,7 @@ const Header = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="text-[#2D336B] text-2xl font-bold menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="text-[#2D336B] text-3xl lg:text-2xl font-bold menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {
                             user && user?.email ? 
                             <>
@@ -54,7 +54,7 @@ const Header = () => {
                 <img className="hidden lg:block w-20 h-20" src={siteLogo} alt="siteLogo" />
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className=" menu-horizontal px-1  text-[#2D336B] text-2xl font-bold">
+                <ul className=" menu-horizontal text-[#2D336B] text-2xl font-bold">
                 {
                     user && user?.email ? 
                     <>
@@ -75,13 +75,13 @@ const Header = () => {
                 }
                 </ul>
             </div>
-            <div className="ml-10 navbar-end">
-                <div className='flex gap-2 lg:gap-4 justify-center items-center'>
+            <div className="ml-10 navbar-end ">
+                <div className='hidden lg:flex border px-6 rounded-3xl border-blue-900 py-1  gap-2 lg:gap-4 justify-center items-center'>
                     {
                         user && user?.email ?
                         <>
-                            <img className="w-10 h-10 bg-white p-1 rounded-full" src={user?.photoURL} alt="userPhoto" />
-                            <h1 className='text-[#2D336B] text-2xl font-bold whitespace-nowrap'>Hi,{user?.displayName}</h1>
+                            <img className="w-10 h-10 bg-blue-900 p-1 rounded-2xl" src={user?.photoURL} alt="userPhoto" />
+                            <h1 className='text-[#2D336B] text-xl font-bold whitespace-nowrap'>Hi,{user?.displayName}</h1>
                             {/* <h1>{user?.email}</h1> */}
                         </>
                         :
@@ -90,7 +90,7 @@ const Header = () => {
                 </div>
                 {
                     (user && user?.email) ?
-                    <button className="ml-6 lg:ml-3  p-3 flex gap-2 bg-[#B2A5FF] rounded-2xl justify-center items-center cursor-pointer hover:rounded-4xl hover:bg-[#a6ace0] text-2xl" onClick={handleSignOut} ><FiLogOut size={25} color='purple'></FiLogOut>Logout</button>
+                    <button className="ml-6 lg:ml-3 p-2 flex gap-2 bg-[#b2a5ff75] rounded-xl justify-center items-center cursor-pointer hover:rounded-4xl hover:bg-[#a6ace0] text-2xl" onClick={handleSignOut} ><FiLogOut size={25} color='purple'></FiLogOut>Logout</button>
                     :
                     "" 
                 }

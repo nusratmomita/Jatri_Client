@@ -1,12 +1,50 @@
-# React + Vite
+# 🚗 Welcome to Jatri  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Want to go on your next trip but can’t decide on the right car?  
+**Jatri** has you covered! It’s a car rental platform where users can book cars, manage their bookings, and update or cancel them anytime.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📝 Core Features  
+- Browse cars in a beautiful card interface  
+- View, update, and delete your cars in a simple table format  
+- Search and sort cars for easy selection  
+- **My Cars** page to manage your added cars and booking dates  
+- Secure authentication with **Email/Password** and **Google Login**  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 👾 Tech Stack  
+- ⚛️ ReactJS  
+- 🚀 ExpressJS  
+- 🍃 MongoDB  
+- 🔀 React Router  
+- 🎨 TailwindCSS  
+- 🔥 Firebase
+
+## 📸 Screenshots  
+> Take a quick look of Aroggo:  
+
+![Screenshot Placeholder](https://i.ibb.co.com/BVGy43Cd/jatri.png)  
+![Screenshot Placeholder](https://i.ibb.co.com/xqbb6NKh/jatri1.png)  
+![Screenshot Placeholder](https://i.ibb.co.com/FLqzcmRQ/jatri2.png)  
+
+---
+
+## 🦾 Run Jatri Locally  
+
+```bash
+# Step 1: Create a folder named Jatri
+mkdir Jatri && cd Jatri
+
+# Step 2: Clone the repository
+git clone https://github.com/nusratmomita/Jatri_Client.git
+
+# Step 3: Install dependencies
+npm install
+
+# Step 4: Get Firebase configurations
+# 👉 Contact the project owner to receive Firebase credentials
+
+# Step 5: Start the project
+npm start

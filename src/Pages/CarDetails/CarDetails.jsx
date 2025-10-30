@@ -15,6 +15,8 @@ const CarDetails = () => {
     const [endingDate , setEndingDate] = useState('');
     const [totalPrice , setTotalPrice] = useState(0);
 
+    const bookedOn = new Date();
+
     const calculateTotalPrice = (start,end) => {
         const startDate = new Date(start);
         const endDate = new Date(end);
@@ -46,11 +48,11 @@ const CarDetails = () => {
             calculateTotalPrice(startingDate,value);
         }
     }
-
-    const bookedOn = new Date();
+    
 
     const handleConfirmationForm = (e) => {
         e.preventDefault();
+
         const form = e.target;
 
         if(!form.startingDate.value || !form.startingDate.value) {
@@ -77,7 +79,7 @@ const CarDetails = () => {
 
         axios.post('https://jatri-server.vercel.app/bookings', bookingInfo)
         .then(() => {
-            return axios.patch(`https://jatri-server.vercel.app/cars/bookings/${singleCar._id}`);
+            return axios.patch(`https://jatri-server.vercel.app/cars/bookings/${singleCar._id}`);// to count booking number
         })
         .then(() => {
             setSingleCar((prev) => ({

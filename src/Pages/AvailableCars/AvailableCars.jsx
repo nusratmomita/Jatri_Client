@@ -59,7 +59,7 @@ const AvailableCars = () => {
         <div className='mt-30 winky-rough-regular'>
             <div className='flex justify-between items-center'>
                 <h1 className='ml-10 text-5xl font-bold mt-20 text-violet-900'>
-                    Total Available Car(s): {cars.length}
+                    Total Availables Car(s): {cars.length}
                 </h1>
                 <div className='w-[180px] mr-10'>
                     {

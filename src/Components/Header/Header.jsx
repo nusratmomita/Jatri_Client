@@ -29,7 +29,7 @@ const Header = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="text-[#2D336B] text-3xl lg:text-2xl font-bold menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="text-[#2D336B] text-6xl font-bold lg:text-6xl menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {
                             user && user?.email ? 
                             <>
@@ -42,8 +42,8 @@ const Header = () => {
                             </> 
                             :
                             <>
-                                <li className='navLinks'><NavLink to="/">Home</NavLink></li>
-                                <li className='navLinks lg:ml-10'><NavLink to="/availableCars">Available Cars</NavLink></li>
+                                <li className='navLinks text-xl lg:text-3xl'><NavLink to="/">Home</NavLink></li>
+                                <li className='text-6xl lg:text-2xl'><NavLink to="/availableCars">Available Cars</NavLink></li>
                                 <li className='navLinks lg:ml-10'><NavLink to="/login">Login</NavLink></li>
                                 <li className='navLinks lg:ml-10'><NavLink to="/register">Register</NavLink></li>
                             </>
@@ -54,7 +54,7 @@ const Header = () => {
                 <img className="hidden lg:block w-20 h-20" src={siteLogo} alt="siteLogo" />
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className=" menu-horizontal text-[#2D336B] text-2xl font-bold">
+                <ul className=" menu-horizontal text-[#2D336B] text-xl lg:text-2xl font-bold">
                 {
                     user && user?.email ? 
                     <>
@@ -76,13 +76,12 @@ const Header = () => {
                 </ul>
             </div>
             <div className="ml-10 navbar-end ">
-                <div className='hidden lg:flex border px-6 rounded-3xl border-blue-900 py-1  gap-2 lg:gap-4 justify-center items-center'>
+                <div className='hidden lg:flex  px-6 rounded-3xl  py-1 gap-2 lg:gap-4 justify-center items-center'>
                     {
                         user && user?.email ?
                         <>
-                            <img className="w-10 h-10 bg-blue-900 p-1 rounded-2xl" src={user?.photoURL} alt="userPhoto" />
-                            <h1 className='text-[#2D336B] text-xl font-bold whitespace-nowrap'>Hi,{user?.displayName}</h1>
-                            {/* <h1>{user?.email}</h1> */}
+                            <img className="w-10 h-10 bg-blue-900 border border-blue-900 p-1 rounded-2xl" src={user?.photoURL} alt="userPhoto" />
+                            <h1 className='text-[#2D336B] text-xl font-bold whitespace-nowrap'>Hi,{user?.displayName ? user?.displayName : "User"}</h1>
                         </>
                         :
                         <FaUserCircle className="w-15 h-15 bg-white p-1 rounded-full" size={25}></FaUserCircle>

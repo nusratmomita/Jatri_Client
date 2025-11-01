@@ -6,7 +6,7 @@ import bannerCars from '../../assets/bannerCars2.jpg'; // Assuming you have a lo
 
 const Banner = () => {
     return (
-        <div className="mt-50 mx-20 rounded-3xl relative h-[500px] text-white overflow-hidden">
+        <div className="mt-40 mx-20 rounded-3xl relative h-[500px] text-white overflow-hidden">
             <div className="absolute inset-0">
                 <img 
                     src={bannerCars}

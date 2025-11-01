@@ -45,9 +45,9 @@ const WhyChooseUs = () => {
     ];
 
     return (
-        <div data-aos="fade-left" className="mt-40 my-24 px-5 text-center">
+        <div data-aos="fade-left" className="mt-25 my-24 px-5 text-center">
             <h1 className="text-3xl lg:text-5xl md:text-6xl font-bold text-[#2D336B]">
-                [ Why Choose Us? ]
+                Why Choose Us?
             </h1>
             <p className='text-xl lg:text-2xl text-[#2D336B] mt-4 mb-12'>Experience the difference with our premium service and commitment to <br />excellence</p>
 

@@ -25,10 +25,10 @@ const RecentListing = ({carData}) => {
 
     }
     return (
-        <div data-aos="fade-right" className="mt-40 my-24 px-4 text-center">
+        <div data-aos="fade-right" className="mt-25 my-24 px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
             <span className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
-              [ Recent Listing ]
+              Recent Listing
             </span>
           </h1>
 
@@ -36,9 +36,9 @@ const RecentListing = ({carData}) => {
             {carData.map((car) => (
               <div
                 key={car._id}
-                className="relative card w-85 bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:shadow-2xl rounded-[2rem] transform hover:scale-[1.03] transition duration-300"
+                className="relative card w-85 bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:shadow-2xl rounded-xl transform hover:scale-[1.03] transition duration-300"
               >
-                <figure className="px-6 pt-6">
+                <figure className="px-2 py-2 pt-3">
                   <img
                     src={car.car_image}
                     alt="car"

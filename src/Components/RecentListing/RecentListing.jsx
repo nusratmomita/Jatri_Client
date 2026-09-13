@@ -4,49 +4,47 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { Link } from 'react-router';
 
 const RecentListing = ({carData}) => {
-    console.log(carData)
+    // console.log(carData)
 
     const postedDate = (carDate) => {
-        const currentDate = new Date();
-        const addedOn = new Date(carDate);
-        // console.log(currentDate,addedOn);
+      const currentDate = new Date();
+      const addedOn = new Date(carDate);
+      // console.log(currentDate,addedOn);
 
-        currentDate.setHours(0,0,0,0);
-        addedOn.setHours(0,0,0,0);
+      currentDate.setHours(0,0,0,0);
+      addedOn.setHours(0,0,0,0);
 
 
-        // const currentDay = currentDate.getDate();
-        // const addedOnDay = addedOn.getDate();
-        const diff = Math.floor((currentDate - addedOn) / (1000 * 60 * 60 * 24));
+      // const currentDay = currentDate.getDate();
+      // const addedOnDay = addedOn.getDate();
+      const diff = Math.floor((currentDate - addedOn) / (1000 * 60 * 60 * 24));
 
-        if(diff === 0) return "Today";
-        else if(diff === 1) return "Yesterday";
-        else return `${diff} days ago`;
+      if(diff === 0) return "Today";
+      else if(diff === 1) return "Yesterday";
+      else return `${diff} days ago`;
 
     }
     return (
-        <div data-aos="fade-right" className="mt-25 my-24 px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
-            <span className="text-5xl md:text-6xl font-bold text-[#2D336B] mb-12">
+        <div data-aos="fade-right" className="mt-25 lg:my-24 mx-5 xl:mx-5 2xl:mx-0 text-center">
+          <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-[#2D336B] mb-12">
               Recent Listing
-            </span>
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ml-15 lg:m-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-5.5 lg:gap-8">
             {carData.map((car) => (
               <div
                 key={car._id}
-                className="relative card w-85 bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] shadow-xl hover:shadow-2xl rounded-xl transform hover:scale-[1.03] transition duration-300"
+                className="relative card bg-gradient-to-br from-[#FFF2F2] to-[#DAD2FF] shadow-xl rounded-lg group"
               >
-                <figure className="px-2 py-2 pt-3">
+                <figure className="">
                   <img
                     src={car.car_image}
                     alt="car"
-                    className="rounded-xl h-48 object-cover"
+                    className="h-48 object-cover w-full group-hover:scale-110 transition-transform duration-500"
                   />
                 </figure>
 
-                <div className="absolute top-2 right-4 flex items-center gap-1 bg-[#FFF2AF] text-[#2D336B] font-semibold px-3 py-1 text-xl rounded-full shadow-md">
+                <div className="absolute -top-4 -right-4 flex items-center gap-1 bg-[#FFF2AF] text-[#2D336B] font-semibold px-3 py-1 text-xl rounded-xl shadow-md">
                   <FaRegCircleCheck size={16} />
                   {car.availability}
                 </div>

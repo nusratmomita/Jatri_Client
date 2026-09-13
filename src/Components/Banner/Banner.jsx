@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router'; // corrected from 'react-router' to 'react-router-dom'
+import { Link } from 'react-router';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
-import bannerCars from '../../assets/bannerCars2.jpg'; // Assuming you have a local image, otherwise use the URL directly
+import bannerCars from '../../assets/bannerCars2.jpg';
 
 const Banner = () => {
     return (
-        <div className="mt-40 mx-20 rounded-3xl relative h-[500px] text-white overflow-hidden">
+        <div className="mt-30 mx-5 xl:mx-5 2xl:mx-0 rounded-3xl relative h-[500px] text-white overflow-hidden">
             <div className="absolute inset-0">
                 <img 
                     src={bannerCars}
@@ -20,7 +20,7 @@ const Banner = () => {
                     initial={{ opacity: 0, y: -200 }}
                     animate={{ opacity: 4, y: 0 }}
                     transition={{ duration: 1.2 }}
-                    className="text-6xl md:text-7xl text-white font-extrabold leading-tight mb-6 animate-pulse"
+                    className="text-3xl md:text-6xl text-white font-extrabold leading-tight mb-6 animate-pulse"
                 >
                     Drive Your Dreams Today!!
                 </motion.h1>
@@ -32,7 +32,7 @@ const Banner = () => {
                 >
                     <Link 
                         to='/availableCars' 
-                        className="bg-gradient-to-r from-[#5b51a2] to-[#7886C7] text-white py-3 px-8 rounded-full text-xl font-bold transition duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl"
+                        className="bg-gradient-to-r from-[#5b51a2] to-[#7886C7] text-white px-4 py-2 lg:py-3 lg:px-8 rounded-full text-lg lg:text-xl font-medium lg:font-bold transition duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl"
                     >
                         View Available Cars
                     </Link>

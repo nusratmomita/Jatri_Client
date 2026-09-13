@@ -11,7 +11,9 @@ const Root = () => {
             {
                 location.pathname !== "*" && <Header></Header>
             }
-            <Outlet></Outlet>
+            <main className='min-h-screen max-w-[1400px] mx-auto'>
+                <Outlet></Outlet>
+            </main>
             {
                 location.pathname !== "*" && <Footer></Footer>
             }

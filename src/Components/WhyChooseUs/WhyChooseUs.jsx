@@ -45,34 +45,30 @@ const WhyChooseUs = () => {
     ];
 
     return (
-        <div data-aos="fade-left" className="mt-25 my-24 px-5 text-center">
-            <h1 className="text-3xl lg:text-5xl md:text-6xl font-bold text-[#2D336B]">
+        <div data-aos="fade-left" className="mt-25 mx-5 xl:mx-5 2xl:mx-0 text-center">
+            <h1 className="text-2xl md:text-3xl xl:text-4xl font-bold text-[#2D336B]">
                 Why Choose Us?
             </h1>
-            <p className='text-xl lg:text-2xl text-[#2D336B] mt-4 mb-12'>Experience the difference with our premium service and commitment to <br />excellence</p>
+            <p className='text-xl text-[#2D336B] mt-2 mb-12 max-w-[500px] w-full mx-auto text-center'>Experience the difference with our premium service and commitment to excellence</p>
 
-            <div class='features'>
-                <div class="feature_div">
+            <div className='features'>
+                <div className="feature_div">
                     {
                         features.map(feature => (
-                            <div key={feature.id} className='single_feature'>
+                            <div key={feature.id} className='single_feature '>
                                 <div className='icon_div'>
-                                    <feature.icon class='icon'/>
+                                    <feature.icon className='icon'/>
                                 </div>
                                 <div>
-                                    <h1 class='feature_title'>{feature.title}</h1>
-                                    <p class='feature_desc'>{feature.description}</p>
+                                    <h1 className='feature_title'>{feature.title}</h1>
+                                    <p className='feature_desc'>{feature.description}</p>
                                 </div>
                             </div>
                         ))
                     }
                 </div>
             </div>
-
-
-            
         </div>
-        
     );
 };
 

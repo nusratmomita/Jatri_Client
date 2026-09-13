@@ -128,7 +128,7 @@ const AvailableCars = () => {
                     cars.length === 0 ?
                     <div className="mt-30 lg:ml-40 mb-20 text-center bg-gradient-to-br from-[#f4f4f8] to-[#eae6ff] rounded-3xl p-10 shadow-lg max-w-xl mx-auto">
                         <h1 className="text-3xl lg:text-4xl font-bold text-[#2D336B] mb-4">
-                        🚗 Alas! No Car named or located with "{searchText}"
+                        🚗 Alas! No Car named or location with "{searchText}"
                         </h1>
                     </div>
                     :

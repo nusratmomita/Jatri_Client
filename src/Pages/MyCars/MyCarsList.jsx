@@ -10,7 +10,7 @@ const MyCarsList = ({ myCarsPromise }) => {
   const initialCars = use(myCarsPromise);
   const [cars , setCars] = useState(initialCars);
   const [sortBy , setSortBy] = useState("");
-  console.log(cars);
+  // console.log(cars);
 
   const { user } = useContext(AuthContext);
   const [email] = useState(user?.email);
@@ -168,7 +168,7 @@ const MyCarsList = ({ myCarsPromise }) => {
           <>
           <div className="mb-30 flex flex-col lg:flex-row justify-between">
             <h1 className="mt-25 ml-15 p-5 flex justify-center items-center text-4xl font-bold text-[#2D336B] hover:text-purple-900">
-                All the cars created by YOU are shown here...
+                All the cars created by you are shown here...
               </h1>
             <select defaultValue="" onChange={(e) => setSortBy(e.target.value)} className="lg:mr-30 mt-30 p-3 ml-30 lg:ml-0 rounded-2xl font-bold text-xl w-[50%] lg:w-[20%] border-2 border-black">
               <option>Sort by..</option>

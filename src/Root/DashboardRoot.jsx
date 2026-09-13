@@ -5,7 +5,7 @@ import { AuthContext } from "../Authentication/AuthContext";
 
 const DashboardRoot = () => {
 
-    const {user} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +15,7 @@ const DashboardRoot = () => {
       if (!user?.email) return;
 
       try {
-        const token = await user.getIdToken(); // verifyFirebaseToken requires it
+        const token = await user.getIdToken();
         const res = await fetch(
           `https://jatri-server.vercel.app/bookings/email?email=${user.email}`,
           {

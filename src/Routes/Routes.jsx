@@ -23,7 +23,6 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                path: "/",
                 loader: ()=> fetch('https://jatri-server.vercel.app/cars/filteredData'),
                 Component: Home
             },
@@ -64,7 +63,7 @@ export const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                index: true, // this matches "/dashboard"
+                index: true,
                 element: <DashboardRoot/>
             },
             {

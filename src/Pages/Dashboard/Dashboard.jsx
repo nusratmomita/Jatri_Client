@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import { FaHome,FaChartLine, FaUser } from 'react-icons/fa';
-import "./DashboardStyle.css"
+import "./Dashboard.css"
 
 
 const DashboardRoot = () => {

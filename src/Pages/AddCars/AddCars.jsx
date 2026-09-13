@@ -61,6 +61,7 @@ const AddCars = () => {
       })
       .catch(() => {
         // console.log(error);
+        toast.error("There was some problem in creating a new car. Please try again");
       });
 
     form.reset();
@@ -187,7 +188,6 @@ const AddCars = () => {
           <button
             type="submit"
             className="mt-10 rounded-2xl btn lg:w-full text-black text-2xl bg-[#FFF2AF] border-2 border-white"
-            value=""
           >
             Add Car
           </button>

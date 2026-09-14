@@ -1,7 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
-import { Link } from 'react-router';
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineDateRange } from "react-icons/md";
 import { LuKeyRound } from "react-icons/lu";

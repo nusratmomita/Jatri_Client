@@ -4,6 +4,7 @@ import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
 import RecentListing from '../../Components/RecentListing/RecentListing';
 import { useLoaderData } from 'react-router';
 import HowItWorks from '../../Components/HowItWorks/HowItWorks';
+import CTASection from '../../Components/CTASection/CTASection';
 
 const Home = () => {
     const carData = useLoaderData();
@@ -14,6 +15,7 @@ const Home = () => {
             <WhyChooseUs></WhyChooseUs>
             <RecentListing carData={carData}></RecentListing>
             <HowItWorks></HowItWorks>
+            <CTASection></CTASection>
         </div>
     );
 };

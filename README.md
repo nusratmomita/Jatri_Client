@@ -28,7 +28,7 @@ https://jatri-9cc51.web.app/
 - 🔥 Firebase
 
 ## 📸 Screenshots  
-> Take a quick look of Aroggo:  
+> Take a quick look of Jatri:  
 
 ![Screenshot Placeholder](https://i.ibb.co.com/BVGy43Cd/jatri.png)  
 ![Screenshot Placeholder](https://i.ibb.co.com/xqbb6NKh/jatri1.png)  
@@ -49,7 +49,7 @@ git clone https://github.com/nusratmomita/Jatri_Client.git
 npm install
 
 # Step 4: Get Firebase configurations
-# 👉 Contact the project owner to receive Firebase credentials
+# 👉 Contact me to receive Firebase credentials
 
 # Step 5: Start the project
 npm start

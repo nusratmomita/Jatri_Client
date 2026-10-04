@@ -21,7 +21,7 @@ const Header = () => {
     };
 
     return (
-        <div className="navbar bg-gradient-to-l from-[#FFF2F2] to-[#A9B5DF] shadow-sm px-4 lg:px-10 fixed z-50 top-0 w-full">
+        <div className="navbar bg-linear-to-r from-[#2D336B] via-[#493D9E] to-[#2D336B] shadow-sm px-4 lg:px-10 fixed z-50 top-0 w-full">
 
             {/* ================= MOBILE HEADER ================= */}
             <div className="flex flex-row-reverse lg:hidden w-full items-center justify-between">

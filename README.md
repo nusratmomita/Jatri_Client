@@ -49,7 +49,7 @@ git clone https://github.com/nusratmomita/Jatri_Client.git
 npm install
 
 # Step 4: Get Firebase configurations
-# 👉 Contact me to receive Firebase credentials
+👉 Contact me to receive Firebase credentials
 
 # Step 5: Start the project
 npm start
